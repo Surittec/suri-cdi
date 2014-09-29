@@ -15,8 +15,19 @@
 	<name>Suri CDI Core</name>
 
 	<dependencies>
+		
+		<!-- deltaspike -->
+	
+		<dependency>
+		    <groupId>org.apache.deltaspike.core</groupId>
+		    <artifactId>deltaspike-core-api</artifactId>
+		</dependency>
 
-
+		<dependency>
+		    <groupId>org.apache.deltaspike.core</groupId>
+		    <artifactId>deltaspike-core-impl</artifactId>
+		</dependency>
+			
 	</dependencies>
 
 </project>

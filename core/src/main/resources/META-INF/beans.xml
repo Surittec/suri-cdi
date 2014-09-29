@@ -3,9 +3,5 @@
 	xsi:schemaLocation="
         http://java.sun.com/xml/ns/javaee 
         http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
-
-	<alternatives>
-<!-- 		<class>br.com.surittec.suriee.core.data.impl.handler.EntityRepositoryHandler</class> -->
-	</alternatives>
-
+	
 </beans>
