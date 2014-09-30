@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    			xmlns:ui="http://java.sun.com/jsf/facelets"
+    			xmlns:f="http://java.sun.com/jsf/core"
+    			xmlns:h="http://java.sun.com/jsf/html"
+    			xmlns:p="http://primefaces.org/ui"
+    			template="/resources/layout/template.xhtml">
+	
+	<ui:define name="body">
+		<br/>
+		<br/>
+		<div class="row">
+	    	<div class="col-lg-12">
+	    		<div class="jumbotron">
+	    			<div class="row">
+	    				<div class="col-lg-12">
+			    			<h1>TESTE!</h1>
+			    			<h:form>
+			    				<h:outputText value="Count: #{testeController.count}" />
+			    				<br/>
+			    				<h:commandButton value="Teste" action="#{testeController.teste()}" />
+			    			</h:form>
+	    				</div>
+	    			</div>
+	    		</div>
+	    	</div>
+    	</div> 
+	</ui:define>
+	
+</ui:composition>

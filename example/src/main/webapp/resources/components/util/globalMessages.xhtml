@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+    	xmlns:ui="http://java.sun.com/jsf/facelets"
+    	xmlns:f="http://java.sun.com/jsf/core"
+    	xmlns:h="http://java.sun.com/jsf/html"
+    	xmlns:p="http://primefaces.org/ui"
+    	xmlns:s="http://www.surittec.com.br/jsf/ui"
+		xmlns:sf="http://www.surittec.com.br/jsf/fn"
+    	xmlns:composite="http://java.sun.com/jsf/composite">
+    	
+	<composite:interface>
+		
+	</composite:interface>
+	
+	<composite:implementation>
+		
+		<p:outputPanel autoUpdate="true">
+			<h:panelGroup layout="block" styleClass="globalMessages" rendered="#{sf:hasGlobalMessages()}">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div id="globalMessagesDiv" class="alert alert-dismissable fade in">
+								<button type="button" class="close" data-dismiss="alert">×</button>
+								<h:messages globalOnly="true" styleClass="list-unstyled" fatalClass="danger" errorClass="danger" infoClass="success" warnClass="warning"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:panelGroup>
+		</p:outputPanel>
+		
+	</composite:implementation>
+	
+</html>

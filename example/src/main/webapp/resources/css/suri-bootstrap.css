@@ -1,0 +1,77 @@
+select[size="1"] {
+	height: 38px;
+}
+
+.form-group a,
+.form-group button,
+.form-group input[type='button'],
+.form-group input[type='submit']{
+	margin-right: 8px;
+}
+
+.ui-widget-content{
+	background-color: #fff;
+	border: 1px solid #cccccc;
+}
+
+.ui-icon{
+	text-indent: inherit;
+}
+
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {
+	border-style: none;	
+	white-space: normal;
+}
+
+.ui-datatable thead th, .ui-datatable tfoot td {
+	text-align: left;	
+}
+
+.ui-paginator-page.ui-state-active {
+	min-width: 10px;
+	line-height: 1;
+	color: #ffffff;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	background-color: #aea79f;
+	border-radius: 10px;
+}
+
+.ui-datatable .ui-sortable-column-icon {
+	margin: 0px 0px 0px 6px;
+}
+
+.ui-button-text{
+	padding: 0.5px 0 0.5px 0 !important;
+}
+
+.table-modal {
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.table-modal thead > tr > th,
+.table-modal tbody > tr > th,
+.table-modal tfoot > tr > th,
+.table-modal thead > tr > td,
+.table-modal tbody > tr > td,
+.table-modal tfoot > tr > td {
+  padding: 6px;
+  line-height: 1.428571429;
+  vertical-align: middle;
+  border-top: 1px solid #dddddd;
+}
+
+.table-modal thead > tr > th {
+  vertical-align: middle;
+  border-bottom: 2px solid #dddddd;
+  text-align: center;
+  white-space: normal;
+}
+
+.table-modal tbody > tr.ui-datatable-empty-message > td {
+  text-align: left;
+}

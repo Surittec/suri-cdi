@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+
+	<application>
+        <locale-config>
+            <default-locale>pt_BR</default-locale>
+            <supported-locale>pt_BR</supported-locale>
+        </locale-config>
+        
+        <message-bundle>br.com.surittec.suricdi.example.util.i18n.Messages</message-bundle>
+        
+        <resource-bundle>
+			<base-name>br.com.surittec.suricdi.example.util.i18n.Labels</base-name>
+			<var>labels</var>
+		</resource-bundle>
+		
+		<resource-bundle>
+			<base-name>br.com.surittec.suricdi.example.util.i18n.Messages</base-name>
+			<var>messages</var>
+		</resource-bundle>
+		
+    </application>
+
+</faces-config>

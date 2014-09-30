@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+									http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+				version="2.0">
+				
+	<namespace>http://example.com.br/jsf/facelets</namespace>
+	<composite-library-name>facelets</composite-library-name>
+	
+	<tag>
+		<tag-name>field</tag-name>
+		<source>../../resources/facelets/field.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>controls</tag-name>
+		<source>../../resources/facelets/controls.xhtml</source>
+	</tag>
+	
+</facelet-taglib>
