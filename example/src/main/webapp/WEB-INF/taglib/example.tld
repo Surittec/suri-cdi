@@ -66,4 +66,15 @@
 		</attribute>
 	</tag>	
 	
+	<tag>
+		<name>section</name>
+		<tag-class />
+		<body-content>empty</body-content>
+		<description>Secao de uma pagina.</description>
+		<attribute>
+	   		<name>title</name>
+	   	   	<type>String</type>
+		</attribute>
+	</tag>	
+	
 </taglib>

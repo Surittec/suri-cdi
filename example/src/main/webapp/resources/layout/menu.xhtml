@@ -17,7 +17,7 @@
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span>
 				</button>
-				<h:link value="#{labels['app.name']}" outcome="pretty:home" styleClass="navbar-brand"/>
+				<h:link value="#{labels['app.name']}" outcome="/view/home.xhtml" styleClass="navbar-brand"/>
 			</div>
 
 			<div class="collapse navbar-collapse navbar-ex7-collapse">
@@ -30,16 +30,7 @@
 						<ul class="dropdown-menu">
 						
 							<li>
-								<h:link value="#{labels['entity.parametrosGerais']}" outcome="pretty:cadastro.parametrosGerais.editar"/>
-							</li>
-							<li>
-								<h:link value="#{labels['entity.descontoGeral']}" outcome="pretty:cadastro.descontoGeral"/>
-							</li>
-							<li>
-								<h:link value="#{labels['entity.fabricante']}" outcome="pretty:cadastro.fabricante"/>
-							</li>
-							<li>
-								<h:link value="#{labels['entity.descontoFabricante']}" outcome="pretty:cadastro.descontoFabricante"/>
+								<h:link value="#{labels['entity.pessoa']}" outcome="/view/cadastro/pessoa/listar.xhtml"/>
 							</li>
 						</ul>
 						

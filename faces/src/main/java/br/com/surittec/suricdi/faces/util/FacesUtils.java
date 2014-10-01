@@ -235,6 +235,16 @@ public abstract class FacesUtils {
         return getMessageFromBundle(null, key, params);
 	}
 	
+    /**
+     * Retorna o locale do usuario
+     * 
+     * @return locale
+     */
+    public static Locale getLocale(){
+    	FacesContext context = FacesContext.getCurrentInstance();
+    	return context.getViewRoot() != null ? context.getViewRoot().getLocale() : context.getExternalContext().getRequestLocale();
+    }
+    
 	/**
 	 * Retorna a mensagem do arquivo properties, que possui o nome passado como argumento, formatada com os parametros passados.
 	 * 
@@ -245,7 +255,7 @@ public abstract class FacesUtils {
 	 */
     public static String getMessageFromBundle(String bundleName, String key, Object ... params){
     	FacesContext context = FacesContext.getCurrentInstance();
-    	Locale locale = context.getViewRoot() != null ? context.getViewRoot().getLocale() : context.getExternalContext().getRequestLocale();
+    	Locale locale = getLocale();
     	
 		if(bundleName == null) bundleName = context.getApplication().getMessageBundle();
 		

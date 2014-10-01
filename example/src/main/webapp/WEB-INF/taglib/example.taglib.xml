@@ -18,4 +18,9 @@
 		<source>../../resources/facelets/controls.xhtml</source>
 	</tag>
 	
+	<tag>
+		<tag-name>section</tag-name>
+		<source>../../resources/facelets/section.xhtml</source>
+	</tag>
+	
 </facelet-taglib>

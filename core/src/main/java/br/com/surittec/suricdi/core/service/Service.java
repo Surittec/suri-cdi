@@ -35,6 +35,7 @@ import org.slf4j.Logger;
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 public abstract class Service {
 
+
 	@Inject
 	protected Logger logger;
 	

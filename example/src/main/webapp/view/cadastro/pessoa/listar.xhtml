@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    			xmlns:ui="http://java.sun.com/jsf/facelets"
+    			xmlns:f="http://java.sun.com/jsf/core"
+    			xmlns:h="http://java.sun.com/jsf/html"
+    			xmlns:p="http://primefaces.org/ui"
+    			xmlns:e="http://example.com.br/jsf/facelets"
+    			template="/resources/layout/template.xhtml">
+	
+	<ui:define name="title">
+		<h:outputText value="#{labels['entity.pessoa']}" />
+	</ui:define>
+	
+	<ui:define name="underTitle">
+		<ul class="breadcrumb">
+			<li><h:link value="#{labels['home']}" outcome="/view/home.xhtml"/></li>
+			<li class="active"><h:outputText value="#{labels['menu.cadastro']}" /></li>
+			<li class="active"><h:outputText value="#{labels['entity.pessoa']}"/></li>
+		</ul>
+	</ui:define>
+	
+	<ui:define name="body">
+		<div class="row">
+	    	<div class="col-lg-12">
+	    		<h:form styleClass="form-horizontal">
+	    			
+	    			<e:section title="#{labels['secao.consulta']}"/>
+	    			
+	    			<e:field id="nomeField" fieldId="nomeInput" label="#{labels['campo.nome']}" inputStyle="col-lg-3">
+						<h:inputText id="nomeInput" value="#{listarPessoasController.nome}" maxlength="100" styleClass="form-control"/>
+					</e:field>
+	    			
+	    			<e:controls>
+						<h:commandButton action="#{listarPessoasController.pesquisar()}" value="#{labels['acao.pesquisar']}" styleClass="btn btn-primary"/>
+						<h:link styleClass="btn btn-default" value="#{labels['acao.adicionar']}" outcome="/view/cadastro/pessoa/manter.xhtml">
+							<f:param name="idPessoa" value="nova"/>
+						</h:link>
+					</e:controls>
+					
+	    		</h:form>
+	    	</div>
+	    </div>
+		
+		<div class="row">
+	    	<div class="col-lg-12">
+	    		
+	    		<e:section title="#{labels['secao.resultado']}"/>
+	    	
+	    		<p:dataTable 	id="resultado" 
+								value="#{listarPessoasController.pessoas}" var="p" 
+								emptyMessage="#{messages['global.nenhum.registro.encontrado']}"
+								paginator="true" rows="10" paginatorAlwaysVisible="false" paginatorPosition="bottom"
+								tableStyleClass="table table-striped table-hover">
+					
+					<p:column sortBy="#{p.id}" styleClass="col-lg-2">  
+		     			<f:facet name="header">  
+		             		<h:outputText value="#" />  
+		     			</f:facet>
+		     			<h:link outcome="/view/cadastro/pessoa/manter.xhtml">
+		     				<f:param name="idPessoa" value="#{p.id}"/>
+		     				<h:outputText value="#{p.id}" />
+		     			</h:link>
+		 			</p:column>
+					
+					<p:column sortBy="#{p.nome}" styleClass="col-lg-4">  
+		     			<f:facet name="header">  
+		             		<h:outputText value="#{labels['campo.nome']}" />  
+		     			</f:facet>
+		     			<h:link outcome="/view/cadastro/pessoa/manter.xhtml">
+		     				<f:param name="idPessoa" value="#{p.id}"/>
+		     				<h:outputText value="#{p.nome}" />
+		     			</h:link> 
+		 			</p:column>
+		 			
+		 			<p:column sortBy="#{p.email}" styleClass="col-lg-3">  
+		     			<f:facet name="header">  
+		             		<h:outputText value="#{labels['campo.email']}" />  
+		     			</f:facet>
+		     			<h:link outcome="/view/cadastro/pessoa/manter.xhtml">
+		     				<f:param name="idPessoa" value="#{p.id}"/>
+		     				<h:outputText value="#{p.email}" />
+		     			</h:link> 
+		 			</p:column>
+		 			
+		 			<p:column sortBy="#{p.cpf}" styleClass="col-lg-3">  
+		     			<f:facet name="header">  
+		             		<h:outputText value="#{labels['campo.cpf']}" />  
+		     			</f:facet>
+		     			<h:link outcome="/view/cadastro/pessoa/manter.xhtml">
+		     				<f:param name="idPessoa" value="#{p.id}"/>
+		     				<h:outputText value="#{p.cpf}" converter="br.com.surittec.suricdi.faces.converter.CpfConverter"/>
+		     			</h:link> 
+		 			</p:column>
+		 			
+				</p:dataTable>
+	    	</div>
+    	</div> 
+	</ui:define>
+	
+</ui:composition>

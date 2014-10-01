@@ -20,6 +20,7 @@
  */
 package br.com.surittec.suricdi.faces.controller;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Locale;
 
@@ -38,6 +39,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.ocpsoft.rewrite.annotation.RequestAction;
+import org.ocpsoft.rewrite.faces.annotation.Deferred;
+import org.ocpsoft.rewrite.faces.annotation.IgnorePostback;
 import org.slf4j.Logger;
 
 import br.com.surittec.suricdi.faces.interceptor.BusinessMessages;
@@ -49,8 +53,10 @@ import br.com.surittec.suricdi.faces.util.FacesUtils;
  *
  */
 @BusinessMessages
-public abstract class Controller{
+public abstract class Controller implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	// ATTRIBUTES
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -66,6 +72,18 @@ public abstract class Controller{
 	
 	public boolean isInitialized() {
 		return initialized;
+	}
+	
+	/**
+	 * Acao invocada sempre que a tela for iniciada.
+	 * Retorne nulo para seguir para a tela ou retorne uma viewId para redirecionar para outra tela
+	 * @return
+	 */
+	@RequestAction
+	@Deferred
+	@IgnorePostback
+	public String requestAction(){
+		return null;
 	}
 	
 	 /**

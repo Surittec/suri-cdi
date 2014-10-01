@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    			xmlns:ui="http://java.sun.com/jsf/facelets"
+    			xmlns:f="http://java.sun.com/jsf/core"
+    			xmlns:h="http://java.sun.com/jsf/html"
+    			xmlns:p="http://primefaces.org/ui"
+    			xmlns:s="http://www.surittec.com.br/jsf/ui"
+				xmlns:sf="http://www.surittec.com.br/jsf/fn"
+				xmlns:util="http://java.sun.com/jsf/composite/components/util"
+				xmlns:e="http://example.com.br/jsf/facelets"
+    			template="/resources/layout/template.xhtml">
+	
+	<ui:define name="title">
+		<h:outputText value="#{labels['entity.pessoa']}" />
+	</ui:define>
+	
+	<ui:define name="underTitle">
+		<ul class="breadcrumb">
+			<li><h:link value="Home" outcome="/view/home.xhtml"/></li>
+			<li class="active"><h:outputText value="#{labels['menu.cadastro']}" /></li>
+			<li class="active"><h:link value="#{labels['entity.pessoa']}" outcome="/view/cadastro/pessoa/listar.xhtml"/></li>
+			<li class="active"><h:outputText value="#{manterPessoaController.pessoa.id ne null ? manterPessoaController.pessoa.nome : labels['acao.incluir']}" /></li>
+		</ul>
+	</ui:define>
+	
+	<ui:define name="body">
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h:form id="editarForm" styleClass="form-horizontal">
+					
+					<e:section title="#{labels['secao.dados.do']} #{labels['entity.pessoa']}"/>
+					
+					<e:field id="nomeField" fieldId="nomeInput" label="#{labels['campo.nome']}" inputStyle="col-lg-3" required="true">
+						<h:inputText id="nomeInput" value="#{manterPessoaController.pessoa.nome}" maxlength="100" styleClass="form-control" required="true"/>
+					</e:field>
+					
+					<e:field id="cpfField" fieldId="cpfInput" label="#{labels['campo.cpf']}" inputStyle="col-lg-3" required="true">
+						<p:inputMask id="cpfInput" value="#{manterPessoaController.pessoa.cpf}" styleClass="form-control" required="true">
+							<s:cpf />
+						</p:inputMask>
+					</e:field>
+					
+					<e:field id="emailField" fieldId="emailInput" label="#{labels['campo.email']}" inputStyle="col-lg-3" required="true">
+						<h:inputText id="emailInput" value="#{manterPessoaController.pessoa.email}" maxlength="100" styleClass="form-control" required="true">
+							<s:email />
+						</h:inputText>
+					</e:field>
+					
+					<e:field id="dataField" fieldId="dataInput" label="#{labels['campo.dataNascimento']}" inputStyle="col-lg-3">
+						<p:inputMask id="dataInput" value="#{manterPessoaController.pessoa.dataNascimento}" styleClass="form-control">
+							<s:date />
+						</p:inputMask>
+					</e:field>
+					
+					<e:field id="sexoField" fieldId="sexoInput" label="#{labels['campo.sexo']}" inputStyle="col-lg-2">
+						<h:selectOneMenu id="sexoInput" value="#{manterPessoaController.pessoa.sexo}" styleClass="form-control">
+							<s:enum noSelectionLabel="#{messages['global.selecione']}"/>
+							<f:selectItems value="#{listasUtil.sexos}" var="s" itemLabel="#{s.descricao}" />
+						</h:selectOneMenu>
+					</e:field>
+					
+					<e:field id="alturaField" fieldId="alturaInput" label="#{labels['campo.altura']}" inputStyle="col-lg-3">
+						<p:inputMask id="alturaInput" value="#{manterPessoaController.pessoa.altura}" styleClass="form-control">
+							<s:number integerDigits="1" fractionDigits="2"/>
+						</p:inputMask>
+					</e:field>
+					
+					<e:controls>
+						<h:commandButton action="#{manterPessoaController.salvar()}" value="#{labels['acao.salvar']}"  styleClass="btn btn-primary"/>
+						<h:commandButton action="#{manterPessoaController.excluir()}" value="#{labels['acao.remover']}"  styleClass="btn btn-default" rendered="#{manterPessoaController.pessoa.id ne null}"/>
+						<h:link outcome="/view/cadastro/pessoa/listar.xhtml" value="#{labels['acao.voltar']}" styleClass="btn btn-default"/>
+					</e:controls>
+					
+				</h:form>
+			</div>
+		</div>
+		
+	</ui:define>
+	
+</ui:composition>

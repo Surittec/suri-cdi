@@ -68,7 +68,7 @@ public abstract  class GenericEntityRepository {
      * @param entity            Entity to remove.
      */
 	public <E> void remove(E entity){
-        entityManager.remove(entity);
+        entityManager.remove(contains(entity) ? entity : entityManager.merge(entity));
     }
 	
 	/**
@@ -95,6 +95,17 @@ public abstract  class GenericEntityRepository {
 		for(E e : entities) refresh(e);
 	}
 
+	/**
+     * Check if the instance is a managed entity instance belonging
+     * to the current persistence context.
+     * @param entity  entity instance
+     * @return boolean indicating if entity is in persistence context
+     * @throws IllegalArgumentException if not an entity
+     */
+	public <E> boolean contains(E entity) {
+		return entityManager.contains(entity);
+	}
+	
 	/**
      * Remove the given entity from the persistence context, causing
      * a managed entity to become detached.  Unflushed changes made

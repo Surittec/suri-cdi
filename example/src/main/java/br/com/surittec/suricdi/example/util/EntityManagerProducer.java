@@ -24,7 +24,7 @@ import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-public class Resources {
+public class EntityManagerProducer {
 
 	@PersistenceContext
 	private EntityManager entityManager;

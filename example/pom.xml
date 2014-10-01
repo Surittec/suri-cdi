@@ -16,6 +16,18 @@
 
 	<dependencies>
 		
+		<!-- jsf -->
+		
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+		</dependency>
+		
 		<!-- apache commons -->
 		
 		<dependency>
@@ -28,37 +40,6 @@
 	   		<artifactId>commons-fileupload</artifactId>
         </dependency>
 		
-		<!-- PicketLink -->
-		<!--
-		<dependency>
-			<groupId>org.picketlink</groupId>
-		    <artifactId>picketlink-api</artifactId>
-			<version>${picketlink.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.picketlink</groupId>
-		    <artifactId>picketlink-impl</artifactId>
-			<version>${picketlink.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.picketlink</groupId>
-		    <artifactId>picketlink-idm-api</artifactId>
-			<version>${picketlink.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.picketlink</groupId>
-		    <artifactId>picketlink-idm-impl</artifactId>
-			<version>${picketlink.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		-->		
-
 		<!-- Surittec -->
 		
 		<dependency>

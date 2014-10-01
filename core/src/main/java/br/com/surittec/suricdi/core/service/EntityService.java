@@ -1,61 +1,20 @@
-package br.com.surittec.suricdi.core.repository;
+package br.com.surittec.suricdi.core.service;
 
 import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
+import br.com.surittec.suricdi.core.repository.GenericEntityRepository;
 
-import org.slf4j.Logger;
+public abstract class EntityService extends Service{
 
-import br.com.surittec.suricdi.core.repository.criteria.JPQL;
-import br.com.surittec.suricdi.core.repository.util.EntityUtil;
-
-@SuppressWarnings("unchecked")
-public abstract class EntityRepository<E, PK extends Serializable> {
-	
-	protected Class<E> type;
-	
-	@Inject
-	protected Logger logger;
-	
-	@Inject
-	protected EntityManager entityManager;
-	
-	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	// CONSTRUCTORS
-	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	/**
-	 * Construtor que ja obtem de forma automatica o tipo do Repository.
-	 */
-	public EntityRepository(){
-		Type superclass = getClass().getGenericSuperclass();
-		if(superclass instanceof ParameterizedType){
-			ParameterizedType parameterizedType = (ParameterizedType)superclass;
-			if(parameterizedType.getActualTypeArguments().length > 0){
-				type = (Class<E>)parameterizedType.getActualTypeArguments()[0];
-			}
-		}
-	}
-	
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	// PROTECTED METHODS
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
-	/**
-	 * Create a JPQL support
-	 * @return jpql
-	 */
-	protected JPQL jpql(){
-		return new JPQL(entityManager);
-	}
-
+	protected abstract GenericEntityRepository getGenericEntityRepository();
+	
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	// PUBLIC METHODS
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -69,12 +28,8 @@ public abstract class EntityRepository<E, PK extends Serializable> {
      * @param entity            Entity to save.
      * @return                  Returns the modified entity.
      */
-	public E save(E entity){
-        if (EntityUtil.isNew(entityManager, entity)){
-            entityManager.persist(entity);
-            return entity;
-        }
-        return entityManager.merge(entity);
+	public <E> E save(E entity){
+		return getGenericEntityRepository().save(entity);
     }
 	
 	/**
@@ -86,53 +41,42 @@ public abstract class EntityRepository<E, PK extends Serializable> {
      * @param entities            Entities to save.
      * @return                  Returns the modified entity.
      */
-	public void save(Collection<E> entities) {
-		for(E e : entities) save(e);
+	public <E> void save(Collection<E> entities) {
+		getGenericEntityRepository().save(entities);
 	}
 	
 	/**
      * Convenience access to {@link javax.persistence.EntityManager#remove(Object)}.
      * @param entity            Entity to remove.
      */
-	public void remove(E entity){
-		entityManager.remove(contains(entity) ? entity : entityManager.merge(entity));
+	public <E> void remove(E entity){
+		getGenericEntityRepository().remove(entity);
     }
 	
 	/**
      * Convenience access to {@link javax.persistence.EntityManager#remove(Object)}.
      * @param entities            Entities to remove.
      */
-	public void remove(Collection<E> entities) {
-		for(E e : entities) remove(e);
+	public <E> void remove(Collection<E> entities) {
+		getGenericEntityRepository().remove(entities);
 	}
 	
 	/**
      * Convenience access to {@link javax.persistence.EntityManager#refresh(Object)}.
      * @param entity            Entity to refresh.
      */
-	public void refresh(E entity){
-        entityManager.refresh(entity);
+	public <E> void refresh(E entity){
+		getGenericEntityRepository().refresh(entity);
     }
 
     /**
      * Convenience access to {@link javax.persistence.EntityManager#refresh(Object)}.
      * @param entities            Entities to refresh.
      */
-	public void refresh(Collection<E> entities) {
-		for(E e : entities) refresh(e);
+	public <E> void refresh(Collection<E> entities) {
+		getGenericEntityRepository().refresh(entities);
 	}
-	
-	/**
-     * Check if the instance is a managed entity instance belonging
-     * to the current persistence context.
-     * @param entity  entity instance
-     * @return boolean indicating if entity is in persistence context
-     * @throws IllegalArgumentException if not an entity
-     */
-	public boolean contains(E entity) {
-		return entityManager.contains(entity);
-	}
-	
+
 	/**
      * Remove the given entity from the persistence context, causing
      * a managed entity to become detached.  Unflushed changes made
@@ -143,8 +87,8 @@ public abstract class EntityRepository<E, PK extends Serializable> {
      * @param entity  entity instance
      * @throws IllegalArgumentException if the instance is not an entity
      */
-	public void detach(E entity) {
-		entityManager.detach(entity);
+	public <E> void detach(E entity) {
+		getGenericEntityRepository().detach(entity);
 	}
 
 	/**
@@ -157,100 +101,79 @@ public abstract class EntityRepository<E, PK extends Serializable> {
      * @param entities  entities instances
      * @throws IllegalArgumentException if the instance is not an entity
      */
-	public void detach(Collection<E> entities) {
-		for(E e : entities) detach(e);
+	public <E> void detach(Collection<E> entities) {
+		getGenericEntityRepository().detach(entities);
 	}
     
     /**
      * Convenience access to {@link javax.persistence.EntityManager#flush()}.
      */
 	public void flush(){
-        entityManager.flush();
+		getGenericEntityRepository().flush();
     }
 	
 	/**
      * Entity lookup by primary key. Convenicence method around
      * {@link javax.persistence.EntityManager#find(Class, Object)}.
+     * @param entityClass		Entity class
      * @param primaryKey        DB primary key.
      * @return                  Entity identified by primary or null if it does not exist.
      */
-	public E findBy(PK primaryKey){
-        return entityManager.find(type, primaryKey);
+	public <E, PK extends Serializable> E findBy(Class<E> entityClass, PK primaryKey){
+		return getGenericEntityRepository().findBy(entityClass, primaryKey);
     }
 
     /**
      * Lookup all existing entities of entity class {@code <E>}.
+     * @param entityClass		Entity class
      * @return                  List of entities, empty if none found.
      */
-	public List<E> findAll(){
-		return jpql().from(EntityUtil.getEntityName(entityManager, type)).getResultList(type);
+	public <E> List<E> findAll(Class<E> entityClass){
+		return getGenericEntityRepository().findAll(entityClass);
     }
 
     /**
      * Lookup a range of existing entities of entity class {@code <E>} with support for pagination.
+     * @param entityClass		Entity class
      * @param start             The starting position.
      * @param max               The maximum number of results to return
      * @return                  List of entities, empty if none found.
      */
-	public List<E> findAll(int start, int max){
-		JPQL jpql = jpql().from(EntityUtil.getEntityName(entityManager, type));
-        if (start > 0) jpql.firstResult(start);
-        if (max > 0) jpql.maxResults(max);
-        return jpql.getResultList(type);
+	public <E> List<E> findAll(Class<E> entityClass, int start, int max){
+		return getGenericEntityRepository().findAll(entityClass, start, max);
     }
 	
 	/**
      * Find entities by the given named query.
+     * @param entityClass		Entity class
      * @param namedQuery        Named Query
      * @param params 	        Named Query parameters
      * @return                  List of entities, empty if none found.
      */
-	public List<E> findByNamedQuery(String namedQuery, Map<String, Object> params){
-		TypedQuery<E> query = entityManager.createNamedQuery(namedQuery, type);
-		if(params != null){
-			for(String paramName : params.keySet()){
-				query.setParameter(paramName, params.get(paramName));
-			}
-		}
-		return query.getResultList();
+	public <E> List<E> findByNamedQuery(Class<E> entityClass, String namedQuery, Map<String, Object> params){
+		return getGenericEntityRepository().findByNamedQuery(entityClass, namedQuery, params);
 	}
 	
 	/**
      * Find any entity by the given named query.
+     * @param entityClass		Entity class
      * @param namedQuery        Named Query
      * @param params 	        Named Query parameters
      * @return                  Entity
      */
-	public E findAnyByNamedQuery(String namedQuery, Map<String, Object> params){
-		TypedQuery<E> query = entityManager.createNamedQuery(namedQuery, type);
-		if(params != null){
-			for(String paramName : params.keySet()){
-				query.setParameter(paramName, params.get(paramName));
-			}
-		}
-		
-		List<E> result = query.getResultList();
-		if(result != null && !result.isEmpty()){
-			return result.get(0);
-		}else{
-			return null;
-		}
+	public <E> E findAnyByNamedQuery(Class<E> entityClass, String namedQuery, Map<String, Object> params){
+		return getGenericEntityRepository().findAnyByNamedQuery(entityClass, namedQuery, params);
 	}
 	
 	/**
      * Find single entity by the given named query.
+     * @param entityClass		Entity class
      * @param namedQuery        Named Query
      * @param params 	        Named Query parameters
      * @return                  Entity
      */
-	public E findUniqueByNamedQuery(String namedQuery, Map<String, Object> params){
-		TypedQuery<E> query = entityManager.createNamedQuery(namedQuery, type);
-		if(params != null){
-			for(String paramName : params.keySet()){
-				query.setParameter(paramName, params.get(paramName));
-			}
-		}
-		return query.getSingleResult();
+	public <E> E findUniqueByNamedQuery(Class<E> entityClass, String namedQuery, Map<String, Object> params){
+		return getGenericEntityRepository().findUniqueByNamedQuery(entityClass, namedQuery, params);
 	}
-    
+	
 }
