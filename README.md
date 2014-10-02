@@ -1,7 +1,7 @@
 Suri-CDI
 ========
 
-Arquitetura para o desenvolvimento Java web, que provê extensões CDIs, classes utilitárias e de suporte para que os desenvolvedores otimizem o tempo de codificação, reaproveitem códigos e produzam aplicações com mais segurança e menos bugs.
+Arquitetura para o desenvolvimento Java web, com extensões CDIs, classes utilitárias e de suporte e diversos componentes para otimização no tempo de codificação, reaproveitamento de códigos e produção de aplicações com mais segurança e menos bugs.
 
 Tecnologias utilizadas:
 * Java 7
