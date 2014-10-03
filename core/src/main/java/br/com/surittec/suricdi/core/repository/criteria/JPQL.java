@@ -104,29 +104,67 @@ public class JPQL {
 		return this;
 	}
 	
+	/**
+	 * Retorna uma lista de entidades que atendem aos critérios da busca.
+	 * Já faz o <code>cast</code> para a classe <code>resultType</code> passada.
+	 * 
+	 * @param resultType
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public <T> List<T> getResultList(Class<T> resultType){
 		return (List<T>) getQuery().getResultList();
 	}
-	
+
+	/**
+	 * Retorna uma lista de entidades que atendem aos critérios da busca.
+	 * 
+	 * @return
+	 */
 	public List<?> getResultList(){
 		return getQuery().getResultList();
 	}
-	
+
+	/**
+	 * Retorna uma única entidade que atenda aos critérios da busca.
+	 * Já faz o <code>cast</code> para a classe <code>resultType</code> passada.
+	 * 
+	 * @param resultType
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public <T> T getSingleResult(Class<T> resultType){
 		return (T) getSingleResult();
 	}
-	
+
+	/**
+	 * Retorna uma única entidade que atenda aos critérios da busca.
+	 * 
+	 * @return
+	 */
 	public Object getSingleResult(){
 		return getQuery().getSingleResult();
 	}
-	
+
+	/**
+	 * Retorna uma única entidade que atenda aos critérios da busca.
+	 * Trata o caso de não haver resultado, retornando <code>null</code>.
+	 * Já faz o <code>cast</code> para a classe <code>resultType</code> passada.
+	 * 
+	 * @param resultType
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public <T> T getAnyResult(Class<T> resultType){
 		return (T) getAnyResult();
 	}
-	
+
+	/**
+	 * Retorna uma única entidade que atenda aos critérios da busca.
+	 * Trata o caso de não haver resultado, retornando <code>null</code>.
+	 * 
+	 * @return
+	 */
 	public Object getAnyResult(){
 		List<?> result = getResultList();
 		if(result != null && !result.isEmpty()) return result.get(0);

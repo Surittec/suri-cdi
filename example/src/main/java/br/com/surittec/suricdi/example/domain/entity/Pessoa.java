@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.com.surittec.suricdi.core.validation.constraint.Cpf;
+import br.com.surittec.suricdi.core.validation.constraint.Email;
 import br.com.surittec.suricdi.example.domain.enums.Sexo;
 
 @Entity
@@ -27,9 +29,11 @@ public class Pessoa {
 	@Column(name = "nome", length = 100, nullable = false)
 	private String nome;
 	
+	@Cpf
 	@Column(name = "cpf", length = 11, unique = true, nullable = false)
 	private String cpf;
 	
+	@Email
 	@Column(name = "email", length = 100, unique = true, nullable = false)
 	private String email;
 	

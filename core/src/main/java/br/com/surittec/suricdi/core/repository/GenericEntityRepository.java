@@ -12,7 +12,7 @@ import javax.persistence.TypedQuery;
 import br.com.surittec.suricdi.core.repository.criteria.JPQL;
 import br.com.surittec.suricdi.core.repository.util.EntityUtil;
 
-public abstract  class GenericEntityRepository {
+public abstract class GenericEntityRepository {
 
 	@Inject
 	protected EntityManager entityManager;
