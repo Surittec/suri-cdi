@@ -29,6 +29,8 @@ public class ManterPessoaController extends Controller{
 	@Deferred
 	private String idPessoa;
 	
+	private String emailConfirm;
+	
 	private Pessoa pessoa;
 	
 	/*
@@ -88,6 +90,14 @@ public class ManterPessoaController extends Controller{
 
 	public void setIdPessoa(String idPessoa) {
 		this.idPessoa = idPessoa;
+	}
+
+	public String getEmailConfirm() {
+		return emailConfirm;
+	}
+
+	public void setEmailConfirm(String emailConfirm) {
+		this.emailConfirm = emailConfirm;
 	}
 	
 }

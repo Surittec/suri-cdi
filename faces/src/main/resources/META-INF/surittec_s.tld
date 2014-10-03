@@ -211,10 +211,5 @@
 	   		<name>message</name>
 	   	   	<type>java.lang.String</type>
 		</attribute>
-		<attribute>
-	   		<name>validateEmailBefore</name>
-	   	   	<type>boolean</type>
-	   		<description>Default: false.</description>
-		</attribute>
 	</tag>
 </taglib>

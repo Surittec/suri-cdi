@@ -70,6 +70,11 @@ public abstract class Controller implements Serializable{
 	// PUBLIC METHODS
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
+	/**
+	 * Util para saber se a controladora ja foi inicializada. 
+	 * Voce devera informar a inicializacao manualmente
+	 * @return
+	 */
 	public boolean isInitialized() {
 		return initialized;
 	}

@@ -49,6 +49,13 @@
 						</h:inputText>
 					</e:field>
 					
+					<e:field id="emailConfirmField" fieldId="emailConfirmInput" label="#{labels['campo.emailCofirm']}" inputStyle="col-lg-3" required="true">
+						<h:inputText id="emailConfirmInput" value="#{manterPessoaController.emailConfirm}" maxlength="100" styleClass="form-control" required="true">
+							<s:email />
+							<s:match with="emailInput"/>
+						</h:inputText>
+					</e:field>
+					
 					<e:field id="dataField" fieldId="dataInput" label="#{labels['campo.dataNascimento']}" inputStyle="col-lg-3">
 						<p:inputMask id="dataInput" value="#{manterPessoaController.pessoa.dataNascimento}" styleClass="form-control">
 							<s:date />

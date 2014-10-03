@@ -17,10 +17,7 @@ public class MatchValidator implements Validator{
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 		if(value == null) return;
 		
-		if(component.getAttributes().get("validateEmailBefore") != null){
-			EmailValidator validator = new EmailValidator();
-			validator.validate(context, component, value);
-		}
+		if(!((EditableValueHolder)component).isValid()) return;
 		
 		String with = (String) component.getAttributes().get("with");
 		EditableValueHolder matchWith = (EditableValueHolder)component.findComponent(with);
@@ -28,7 +25,9 @@ public class MatchValidator implements Validator{
 			 throw new FacesException("Cannot find component " + with + " in view.");
 		}
 		
-		if(!value.equals(matchWith.getSubmittedValue())){
+		if(!matchWith.isValid()) return;
+		
+		if(!value.equals(matchWith.getValue())){
 			String message = (String)component.getAttributes().get("message");
 			if(message != null && !message.trim().equals("")){
 				throw new ValidatorException(FacesUtils.createMessage(FacesMessage.SEVERITY_ERROR, message));
