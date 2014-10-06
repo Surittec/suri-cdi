@@ -9,7 +9,7 @@
 <ui:composition>
 	
 	<f:attribute name="DateConverter.PATTERN_ATTR" value="#{sf:getDefaultValue(pattern, 'dd/MM/yyyy')}"/>
-	<f:attribute name="mask" value="mask:'#{sf:getDefaultValue(mask, '99/99/9999')}', autoTab : #{sf:getDefaultValue(autoTab,false)}"/>
+	<f:attribute name="mask" value="mask:'#{sf:getDefaultValue(mask, '39/19/9999')}', autoTab : #{sf:getDefaultValue(autoTab,false)}"/>
 	<f:converter converterId="br.com.surittec.suricdi.faces.converter.DateConverter"/>
 	<f:validator validatorId="br.com.surittec.suricdi.faces.validator.DateValidator"/>
 	

@@ -15,10 +15,6 @@
 		
 	<f:converter converterId="br.com.surittec.suricdi.faces.converter.NumberConverter" />
 	
-	<c:if test="#{not empty validator}">
-		<f:validator validatorId="#{validator}"/>
-	</c:if>
-	
 	<c:if test="#{not empty locale}">
 		<f:attribute name="locale" value="#{locale}"/>
 	</c:if>

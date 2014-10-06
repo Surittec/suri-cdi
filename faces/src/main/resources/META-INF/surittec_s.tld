@@ -63,7 +63,7 @@
             <required>false</required>
             <type>String</type>
             <description>
-            	Mascara para o pattern informado. Default: 99/99/9999
+            	Mascara para o pattern informado. Default: 39/19/9999
             </description>
         </attribute>
 		<attribute>
@@ -152,12 +152,6 @@
 			Utilizado em conjunto com inputMask do Primefaces. Insere mascara e converter.
 		</description>
 		
-		<attribute>
-            <name>validator</name>
-            <required>false</required>
-            <type>javax.faces.validator.Validator</type>
-            <description>Validator instance registered with this component. Used for number, date and generic input components</description>
-        </attribute>
 		<attribute>
             <name>autoTab</name>
             <required>false</required>
