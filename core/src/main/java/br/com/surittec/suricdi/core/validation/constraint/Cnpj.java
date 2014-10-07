@@ -27,6 +27,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
+import javax.validation.Payload;
 
 import br.com.surittec.suricdi.core.validation.CpfValidator;
 
@@ -36,7 +37,7 @@ import br.com.surittec.suricdi.core.validation.CpfValidator;
  * @author lucas lins
  *
  */
-@Target({ElementType.FIELD, ElementType.METHOD})
+@Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = CpfValidator.class)
 @Documented
@@ -44,5 +45,7 @@ public @interface Cnpj {
 
 	boolean nullable() default false;
 	String message() default "{javax.validation.constraints.Cnpj.message}";
+	Class<?>[] groups() default {};
+	Class<? extends Payload>[] payload() default {};
 	
 }

@@ -62,7 +62,7 @@ public class PessoaService extends EntityService{
 	}
 	
 	public void save(Pessoa pessoa){
-		Assert.isFalse(pessoaRepository.isUnique(pessoa), messages.pessoaCadastroFalhaUnicidade());
+		Assert.isTrue(pessoaRepository.isUnique(pessoa), messages.pessoaCadastroFalhaUnicidade());
 		
 		super.save(pessoa);
 	}
