@@ -36,6 +36,10 @@ import org.slf4j.Logger;
 import br.com.surittec.suricdi.core.repository.criteria.JPQL;
 import br.com.surittec.suricdi.core.repository.util.EntityUtil;
 
+/**
+ * Suporte para classes de persistência, com encapsulamento do uso do {@link javax.persistence.EntityManager}
+ * e provendo algumas operações necessárias manter ou pesquisar entidades.
+ */
 @SuppressWarnings("unchecked")
 public abstract class EntityRepository<E, PK extends Serializable> {
 

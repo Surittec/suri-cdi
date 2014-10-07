@@ -22,6 +22,9 @@ package br.com.surittec.suricdi.core.repository.util;
 
 import javax.persistence.EntityManager;
 
+/**
+ * Utilitário para buscar informações de persistência de entidades do modelo.
+ */
 public abstract class EntityUtil {
 
 	public static String getEntityName(EntityManager entityManager, Class<?> entityClass){

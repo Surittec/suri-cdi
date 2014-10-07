@@ -28,11 +28,19 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 
+ * Fábrica de recursos para a arquitetura.
+ * 
  * @author Lucas Lins
  * 
  */
 public class Resources {
 	
+	/**
+	 * Produz um log específico para a classe onde for injetada.
+	 * 
+	 * @param injectionPoint
+	 * @return
+	 */
     @Produces
     public Logger produceLog(InjectionPoint injectionPoint) {
         return LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass().getName());

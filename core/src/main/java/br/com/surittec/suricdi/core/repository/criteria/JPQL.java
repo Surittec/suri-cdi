@@ -29,7 +29,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 /**
- * JPQL Support.
+ * Suporte para construção de queries em JPQL.
  *
  */
 public class JPQL {
@@ -64,41 +64,90 @@ public class JPQL {
     // PUBLIC
     // ----------------------------------------------------------------------------
 	
+	/**
+	 * Inclui cláusulas SELECT para as queries. 
+	 * 
+	 * @param select
+	 * @return
+	 */
 	public JPQL select(String select){
 		this.select.add(select);
 		return this;
 	}
-	
+
+	/**
+	 * Inclui cláusulas FROM para as queries. 
+	 * 
+	 * @param from
+	 * @return
+	 */
 	public JPQL from(String from){
 		this.from.add(from);
 		return this;
 	}
-	
+
+	/**
+	 * Inclui cláusulas WHERE para as queries. 
+	 * 
+	 * @param where
+	 * @return
+	 */
 	public JPQL where(String where){
 		this.where.add(where);
 		return this;
 	}
-	
+
+	/**
+	 * Inclui valores para os parâmetros nominais das cláusulas. 
+	 * 
+	 * @param paramName
+	 * @param paramValue
+	 * @return
+	 */
 	public JPQL withParam(String paramName, Object paramValue){
 		this.params.put(paramName, paramValue);
 		return this;
 	}
 	
+	/**
+	 * Inclui cláusulas GROUP BY para as queries. 
+	 * 
+	 * @param group
+	 * @return
+	 */
 	public JPQL groupBy(String group){
 		this.group.add(group);
 		return this;
 	}
-	
+
+	/**
+	 * Inclui cláusulas ORDER BY para as queries. 
+	 * 
+	 * @param order
+	 * @return
+	 */
 	public JPQL orderBy(String order){
 		this.order.add(order);
 		return this;
 	}
-	
+
+	/**
+	 * Informa qual será o índice do primeiro resultado retornado pela query. 
+	 * 
+	 * @param firstResult
+	 * @return
+	 */
 	public JPQL firstResult(Integer firstResult){
 		this.firstResult = firstResult;
 		return this;
 	}
-	
+
+	/**
+	 * Limita a quantidade de resultados trazidos pela query. 
+	 * 
+	 * @param firstResult
+	 * @return
+	 */
 	public JPQL maxResults(Integer maxResults){
 		this.maxResults = maxResults;
 		return this;

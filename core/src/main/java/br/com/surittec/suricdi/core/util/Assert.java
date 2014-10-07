@@ -27,6 +27,9 @@ import br.com.surittec.suricdi.core.exception.BusinessException;
 import br.com.surittec.util.message.Message;
 
 /**
+ * Classe utilitária que realiza várias validações de parâmetros e lança
+ * {@link br.com.surittec.suricdi.core.exception.BusinessException}
+ * quando necessário.
  * 
  * @author Lucas Lins
  * 
@@ -34,9 +37,9 @@ import br.com.surittec.util.message.Message;
 public abstract class Assert {
 	
 	/**
-	 * Valida se <code>value</code> é nulo e, se não for, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> é nulo e, se não for, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -46,9 +49,9 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> é nulo e, se não for, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> é nulo e, se não for, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -58,9 +61,9 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> é nulo e, se não for, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> é nulo e, se não for, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -70,9 +73,9 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> não é nulo e, se for, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> não é nulo e, se for, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -82,9 +85,9 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> não é nulo e, se for, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> não é nulo e, se for, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -94,9 +97,9 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> não é nulo e, se for, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> não é nulo e, se for, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -106,9 +109,9 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> possui conteúdo textual e, se não tiver, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> possui conteúdo textual e, se não tiver, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -118,9 +121,9 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> possui conteúdo textual e, se não tiver, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> possui conteúdo textual e, se não tiver, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -130,9 +133,9 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> possui conteúdo textual e, se não tiver, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> possui conteúdo textual e, se não tiver, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -142,9 +145,9 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -155,9 +158,9 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -168,9 +171,9 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -181,9 +184,9 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -194,9 +197,9 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -207,9 +210,9 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma 
+	 * {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -220,9 +223,8 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -233,9 +235,8 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -246,9 +247,8 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma <code>BusinessException</code>.
+	 * Valida se <code>value</code> possui elementos inseridos e, se não tiver, lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -260,9 +260,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui conteúdo textual e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -273,9 +272,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui conteúdo textual e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -286,9 +284,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui conteúdo textual e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -299,9 +296,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui elementos inseridos e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -312,9 +308,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui elementos inseridos e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -325,9 +320,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui elementos inseridos e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -338,9 +332,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui elementos inseridos e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -351,9 +344,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui elementos inseridos e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -364,9 +356,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui elementos inseridos e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -377,9 +368,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui elementos inseridos e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -391,9 +381,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui elementos inseridos e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -405,9 +394,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui elementos inseridos e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -419,9 +407,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui elementos inseridos e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -433,9 +420,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui elementos inseridos e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -447,9 +433,8 @@ public abstract class Assert {
 
 	/**
 	 * Valida se <code>value</code> é nulo ou não possui elementos inseridos e, se tiver,
-	 * lança uma <code>BusinessException</code>.
+	 * lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -460,9 +445,8 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>condition</code> é válida, se não, lança uma <code>BusinessException</code>.
+	 * Valida se <code>condition</code> é válida, se não, lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -472,9 +456,8 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>condition</code> é válida, se não, lança uma <code>BusinessException</code>.
+	 * Valida se <code>condition</code> é válida, se não, lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -484,9 +467,8 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>condition</code> é válida, se não, lança uma <code>BusinessException</code>.
+	 * Valida se <code>condition</code> é válida, se não, lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -496,9 +478,8 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>condition</code> não é válida, se for, lança uma <code>BusinessException</code>.
+	 * Valida se <code>condition</code> não é válida, se for, lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -508,9 +489,8 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>condition</code> não é válida, se for, lança uma <code>BusinessException</code>.
+	 * Valida se <code>condition</code> não é válida, se for, lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams
@@ -520,9 +500,8 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Valida se <code>condition</code> não é válida, se for, lança uma <code>BusinessException</code>.
+	 * Valida se <code>condition</code> não é válida, se for, lança uma {@link br.com.surittec.suricdi.core.exception.BusinessException}.
 	 * 
-	 * @see br.com.surittec.suricdi.core.exception.BusinessException
 	 * @param value
 	 * @param message
 	 * @param messageParams

@@ -27,7 +27,19 @@ import java.util.Map;
 
 import br.com.surittec.suricdi.core.repository.GenericEntityRepository;
 
-public abstract class EntityService extends Service{
+/**
+ * <p>
+ * Suporte para classes de serviço, com encapsulamento do uso do
+ * {@link br.com.surittec.suricdi.core.repository.GenericEntityRepository}
+ * e provendo algumas operações necessárias manter ou pesquisar entidades.
+ * </p>
+ * 
+ * <p>
+ * Além disso, sua classe filho deve ser um EJB para implementar o escopo
+ * transacional definido por padrão, {@code TransactionAttributeType.REQUIRED}.
+ * </p>
+ */
+public abstract class EntityService extends Service {
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	// PROTECTED METHODS

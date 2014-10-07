@@ -32,6 +32,10 @@ import javax.persistence.TypedQuery;
 import br.com.surittec.suricdi.core.repository.criteria.JPQL;
 import br.com.surittec.suricdi.core.repository.util.EntityUtil;
 
+/**
+ * Suporte para classes de persistência, com encapsulamento do uso do {@link javax.persistence.EntityManager}
+ * e provendo algumas operações necessárias manter ou pesquisar entidades.
+ */
 public abstract class GenericEntityRepository {
 
 	@Inject
