@@ -249,135 +249,151 @@
 			</dependency>
 			
 			<dependency>
-	            <groupId>commons-fileupload</groupId>
-	            <artifactId>commons-fileupload</artifactId>
-	            <version>${commons-fileupload.version}</version>
-	            <scope>compile</scope>
-	        </dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload.version}</version>
+				<scope>compile</scope>
+			</dependency>
 			
 			<!-- deltaspike-->
 			
 			<dependency>
-			    <groupId>org.apache.deltaspike.core</groupId>
-			    <artifactId>deltaspike-core-api</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>compile</scope>
+				<groupId>org.apache.deltaspike.core</groupId>
+				<artifactId>deltaspike-core-api</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
 			</dependency>
 
 			<dependency>
-			    <groupId>org.apache.deltaspike.core</groupId>
-			    <artifactId>deltaspike-core-impl</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>runtime</scope>
+				<groupId>org.apache.deltaspike.core</groupId>
+				<artifactId>deltaspike-core-impl</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
 			</dependency>
 			
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-security-module-api</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>compile</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-security-module-api</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
 			</dependency>
 
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-security-module-impl</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>runtime</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-security-module-impl</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
 			</dependency>
 
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-jpa-module-api</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>compile</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-jpa-module-api</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
 			</dependency>
 
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-jpa-module-impl</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>runtime</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-jpa-module-impl</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
 			</dependency>
 			
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-jsf-module-api</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>compile</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-jsf-module-api</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
 			</dependency>
 
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-jsf-module-impl</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>runtime</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-jsf-module-impl</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
 			</dependency>
 			
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-bean-validation-module-impl</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>runtime</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-bean-validation-module-impl</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
 			</dependency>
 			
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-servlet-module-api</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>compile</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-servlet-module-api</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
 			</dependency>
 
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-servlet-module-impl</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>runtime</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-servlet-module-impl</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
 			</dependency>
 			
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-data-module-api</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>compile</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-data-module-api</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
 			</dependency>
 
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-data-module-impl</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>runtime</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-data-module-impl</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
 			</dependency>
 			
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-test-control-module-api</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>test</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-test-control-module-api</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>test</scope>
 			</dependency>
 
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-test-control-module-impl</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>test</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-test-control-module-impl</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>test</scope>
 			</dependency>
 			
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-scheduler-module-api</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>compile</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-scheduler-module-api</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
 			</dependency>
 
 			<dependency>
-			    <groupId>org.apache.deltaspike.modules</groupId>
-			    <artifactId>deltaspike-scheduler-module-impl</artifactId>
-			    <version>${deltaspike.version}</version>
-			    <scope>runtime</scope>
+				<groupId>org.apache.deltaspike.modules</groupId>
+				<artifactId>deltaspike-scheduler-module-impl</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			
+			<!-- PicketLink -->
+		
+			<dependency>
+				<groupId>org.picketlink</groupId>
+				<artifactId>picketlink-api</artifactId>
+				<scope>compile</scope>
+				<version>${picketlink.version}</version>
+			</dependency>
+		
+			<dependency>
+				<groupId>org.picketlink</groupId>
+				<artifactId>picketlink-impl</artifactId>
+				<scope>compile</scope>
+				<version>${picketlink.version}</version>
 			</dependency>
 			
 			<!-- test -->
-		
+			
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
@@ -441,9 +457,9 @@
 		</dependency>
 		
 		<dependency>
-            <groupId>org.jboss.spec.javax.ejb</groupId>
-            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
-        </dependency>
+			<groupId>org.jboss.spec.javax.ejb</groupId>
+			<artifactId>jboss-ejb-api_3.1_spec</artifactId>
+		</dependency>
 		
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
@@ -559,6 +575,7 @@
 		<commons-fileupload.version>1.3.1</commons-fileupload.version>
 		
 		<deltaspike.version>1.0.3</deltaspike.version>
+		<picketlink.version>2.5.3.SP10</picketlink.version>
 		
 		<junit.version>4.11</junit.version>
 		
