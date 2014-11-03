@@ -43,7 +43,7 @@ public class Resources {
 	 */
     @Produces
     public Logger produceLog(InjectionPoint injectionPoint) {
-        return LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
+        return LoggerFactory.getLogger(injectionPoint.getBean().getBeanClass().getName());
     }
     
 }
