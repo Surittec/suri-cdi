@@ -36,7 +36,27 @@
  */
 $ = jQuery;
 (function($){
+	
+	{
+		var uaMatch = function(ua) {
+			ua = ua.toLowerCase();
+			
+			var match = /(chrome)[ \/]([\w.]+)/.exec(ua) || /(webkit)[ \/]([\w.]+)/.exec(ua) || /(opera)(?:.*version|)[ \/]([\w.]+)/.exec(ua) || /(msie) ([\w.]+)/.exec(ua) || ua.indexOf('compatible') < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec(ua) || [];
+			
+			return match[2] || '0';
+		};
+		var isIE11 = function () { return ((navigator.appName == 'Microsoft Internet Explorer') || ((navigator.appName == 'Netscape') && (new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})").exec(navigator.userAgent) != null))); };
 		
+		$.browser = {
+				mozilla: /mozilla/.test(navigator.userAgent.toLowerCase()) && !/webkit/.test(navigator.userAgent.toLowerCase()),
+				webkit: /webkit/.test(navigator.userAgent.toLowerCase()),
+				opera: /opera/.test(navigator.userAgent.toLowerCase()),
+				msie: /msie/.test(navigator.userAgent.toLowerCase()) || isIE11(),
+				android: (navigator.userAgent.toLowerCase().indexOf('mozilla/5.0') > -1 && navigator.userAgent.toLowerCase().indexOf('android ') > -1 && navigator.userAgent.toLowerCase().indexOf('applewebkit') > -1),
+				version: uaMatch(navigator.userAgent),
+		};
+	}
+	
 	var isIphone = (window.orientation != undefined),
 		// browsers like firefox2 and before and opera doenst have the onPaste event, but the paste feature can be done with the onInput event.
 		pasteEvent = (($.browser.opera || ($.browser.mozilla && parseFloat($.browser.version.substr(0,3)) < 1.9 ))? 'input': 'paste');
@@ -737,7 +757,10 @@ $ = jQuery;
 			
 			// adaptation from http://digitarald.de/project/autocompleter/
 			__getRange : function(input){
-				if (!$.browser.msie) return {start: input.selectionStart, end: input.selectionEnd};
+				if ((!$.browser.msie || $.browser.msie && $.browser.version >= 11) && !$.browser.android) return {
+	                start: input.selectionStart,
+	                end: input.selectionEnd
+	            };
 				var pos = {start: 0, end: 0},
 					range = document.selection.createRange();
 				pos.start = 0 - range.duplicate().moveStart('character', -100000);
