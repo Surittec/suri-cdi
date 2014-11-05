@@ -22,7 +22,6 @@ package br.com.surittec.suricdi.faces.controller;
 
 import java.io.Serializable;
 import java.util.Iterator;
-import java.util.Locale;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.EditableValueHolder;
@@ -90,30 +89,6 @@ public abstract class Controller implements Serializable{
 	public String requestAction(){
 		return null;
 	}
-	
-	 /**
-     * Comparacao de strings com ignore case, util para dataTables com sort
-     * @param obj1
-     * @param obj2
-     * @return
-     */
-    public int sortIgnoreCase(Object obj1, Object obj2){
-		return ((String)obj1).compareToIgnoreCase((String)obj2);
-	}
-    
-    /**
-     * Filtro de dados ignorando o caso, util para dataTables
-     * @param value
-     * @param filter
-     * @param locale
-     * @return
-     */
-    public boolean filterIgnoreCase(Object value, Object filter, Locale locale) {
-    	String filterText = (filter == null) ? null : filter.toString().trim();
-    	if (filterText == null || filterText.equals("")) return true;
-    	if (value == null) return false;
-    	return value.toString().toUpperCase().contains(filterText.toUpperCase());
-    }
     
 	/**
 	 * Metodo para ser utilizado em acoes de cancelamento que exigem a limpeza de um form.
