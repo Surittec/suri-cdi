@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>br.com.surittec</groupId>
+		<artifactId>suri-cdi</artifactId>
+		<version>1.0.4</version>
+	</parent>
+
+	<artifactId>suri-cdi-scheduler</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Suri CDI Scheduler</name>
+
+	<dependencies>
+		
+		<!-- Surittec -->
+		
+		<dependency>
+			<groupId>br.com.surittec</groupId>
+			<artifactId>suri-cdi-core</artifactId>
+		</dependency>
+		
+		<!-- deltaspike -->
+		
+		<dependency>
+			<groupId>org.apache.deltaspike.modules</groupId>
+			<artifactId>deltaspike-scheduler-module-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.deltaspike.modules</groupId>
+			<artifactId>deltaspike-scheduler-module-impl</artifactId>
+		</dependency>
+		
+		<!-- weld -->
+		
+		<dependency>
+			<groupId>org.jboss.weld</groupId>
+			<artifactId>weld-core</artifactId>
+		</dependency>
+		
+		<!-- quartz -->
+		
+		<dependency>
+		    <groupId>org.quartz-scheduler</groupId>
+		    <artifactId>quartz</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.quartz-scheduler</groupId>
+		    <artifactId>quartz-jobs</artifactId>
+		</dependency>
+		
+	</dependencies>
+
+</project>
