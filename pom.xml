@@ -376,6 +376,13 @@
 				<scope>compile</scope>
 			</dependency>
 			
+			<dependency>
+				<groupId>org.apache.deltaspike.cdictrl</groupId>
+				<artifactId>deltaspike-cdictrl-api</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			
 			<!-- Weld  -->
 			
 			<dependency>
@@ -383,22 +390,6 @@
 				<artifactId>weld-core</artifactId>
 				<version>${weld.version}</version>
 				<scope>provided</scope>
-			</dependency>
-			
-			<!-- Quartz -->
-			
-			<dependency>
-			    <groupId>org.quartz-scheduler</groupId>
-			    <artifactId>quartz</artifactId>
-			    <version>${quartz.version}</version>
-			    <scope>compile</scope>
-			</dependency>
-			
-			<dependency>
-			    <groupId>org.quartz-scheduler</groupId>
-			    <artifactId>quartz-jobs</artifactId>
-			    <version>${quartz.version}</version>
-			    <scope>compile</scope>
 			</dependency>
 			
 			<!-- PicketLink -->
@@ -432,6 +423,13 @@
 				<groupId>br.com.surittec</groupId>
 				<artifactId>suri-util</artifactId>
 				<version>${suri-util.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>br.com.surittec</groupId>
+				<artifactId>suri-quartz</artifactId>
+				<version>${suri-quartz.version}</version>
 				<scope>compile</scope>
 			</dependency>
 			
@@ -607,6 +605,7 @@
 		<junit.version>4.11</junit.version>
 		
 		<suri-util.version>1.0.1</suri-util.version>
+		<suri-quartz.version>1.0.0</suri-quartz.version>
 		
 	</properties>
 </project>
