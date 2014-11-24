@@ -447,12 +447,20 @@
 				<scope>compile</scope>
 			</dependency>
 			
+			<dependency>
+				<groupId>br.com.surittec</groupId>
+				<artifactId>suri-cdi-scheduler</artifactId>
+				<version>${project.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			
 		</dependencies>
 	</dependencyManagement>
 	
 	<modules>
 		<module>core</module>
 		<module>faces</module>
+		<module>scheduler</module>
 	</modules>
 	
 	<dependencies>
