@@ -5,7 +5,7 @@
 
 	<groupId>br.com.surittec</groupId>
 	<artifactId>suri-cdi</artifactId>
-	<version>1.0.4</version>
+	<version>1.0.5</version>
 	<packaging>pom</packaging>
 
 	<name>Suri CDI</name>
@@ -612,7 +612,7 @@
 		<junit.version>4.11</junit.version>
 		
 		<suri-util.version>1.0.1</suri-util.version>
-		<suri-quartz.version>1.0.0</suri-quartz.version>
+		<suri-quartz.version>1.0.1</suri-quartz.version>
 		
 	</properties>
 </project>
