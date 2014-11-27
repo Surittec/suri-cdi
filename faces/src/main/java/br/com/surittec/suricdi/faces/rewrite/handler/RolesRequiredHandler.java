@@ -24,6 +24,7 @@ import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.annotation.api.ClassContext;
 import org.ocpsoft.rewrite.annotation.api.HandlerChain;
 import org.ocpsoft.rewrite.annotation.handler.HandlerWeights;
+import org.ocpsoft.rewrite.annotation.handler.JoinHandler;
 import org.ocpsoft.rewrite.annotation.spi.AnnotationHandler;
 import org.ocpsoft.rewrite.servlet.config.SendStatus;
 import org.slf4j.Logger;
@@ -47,9 +48,12 @@ public class RolesRequiredHandler implements AnnotationHandler<RolesRequired> {
 		return RolesRequired.class;
 	}
 
+	/**
+	 * Needs high priority than {@link JoinHandler}
+	 */
 	@Override
 	public int priority() {
-		return HandlerWeights.WEIGHT_TYPE_STRUCTURAL;
+		return HandlerWeights.WEIGHT_TYPE_STRUCTURAL - 1;
 	}
 
 	@Override
