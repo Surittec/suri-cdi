@@ -20,10 +20,10 @@
  */
 package br.com.surittec.suricdi.faces.util;
 
-import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;
@@ -34,6 +34,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import br.com.surittec.suricdi.core.util.MessageUtil;
 
 /**
  * Classe utilitaria para o JSF
@@ -273,29 +275,15 @@ public abstract class FacesUtils {
 	 * @return mensagem formatada
 	 */
     public static String getMessageFromBundle(String bundleName, Locale locale, String key, Object ... params){
-		ResourceBundle bundle = ResourceBundle.getBundle(bundleName, locale);
 		
-		if(bundle.containsKey(key)) return formatMsg(bundle.getString(key), params);
-		
-		bundle = ResourceBundle.getBundle(Constants.SURITTEC_FACES_BUNDLE_BASENAME, locale);
-		if(bundle.containsKey(key)) return formatMsg(bundle.getString(key), params);
-		
-		bundle = ResourceBundle.getBundle(Constants.SURITTEC_CORE_BUNDLE_BASENAME, locale);
-		if(bundle.containsKey(key)) return formatMsg(bundle.getString(key), params);
-		
-		bundle = ResourceBundle.getBundle(Constants.PRIMEFACES_BUNDLE_BASENAME, locale);
-		if(bundle.containsKey(key)) return formatMsg(bundle.getString(key), params);
-		
-		bundle = ResourceBundle.getBundle(Constants.DEFAULT_BUNDLE_BASENAME, locale);
-		if(bundle.containsKey(key)) return formatMsg(bundle.getString(key), params);
-		
-        return formatMsg(key, params);
+    	List<String> bundlesName = new ArrayList<String>();
+    	bundlesName.add(bundleName);
+    	bundlesName.add(Constants.SURITTEC_FACES_BUNDLE_BASENAME);
+    	bundlesName.add(Constants.SURITTEC_CORE_BUNDLE_BASENAME);
+    	bundlesName.add(Constants.PRIMEFACES_BUNDLE_BASENAME);
+    	bundlesName.add(Constants.DEFAULT_BUNDLE_BASENAME);
+    	
+    	return MessageUtil.getMessageFromBundle(bundlesName, locale, key, params);
 	}
-    
-    private static String formatMsg(String msg, Object ... params){
-    	if(params == null || params.length == 0) return msg;
-		MessageFormat form = new MessageFormat(msg);
-        return form.format(params);
-    }
 	
 }

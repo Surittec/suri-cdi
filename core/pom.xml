@@ -16,6 +16,13 @@
 
 	<dependencies>
 		
+		<!-- Validator -->
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+		
 		<!-- deltaspike -->
 		
 		<dependency>

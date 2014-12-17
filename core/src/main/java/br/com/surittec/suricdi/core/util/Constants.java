@@ -18,13 +18,10 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package br.com.surittec.suricdi.faces.util;
+package br.com.surittec.suricdi.core.util;
 
 public abstract class Constants {
 	
-	public static final String DEFAULT_BUNDLE_BASENAME = "javax.faces.Messages";
-	public static final String PRIMEFACES_BUNDLE_BASENAME = "org.primefaces.Messages";
-	public static final String SURITTEC_FACES_BUNDLE_BASENAME = "br.com.surittec.suricdi.faces.Messages";
-	public static final String SURITTEC_CORE_BUNDLE_BASENAME = br.com.surittec.suricdi.core.util.Constants.SURITTEC_CORE_BUNDLE_BASENAME;
+	public static final String SURITTEC_CORE_BUNDLE_BASENAME = "br.com.surittec.suricdi.core.Messages";
 	
 }
