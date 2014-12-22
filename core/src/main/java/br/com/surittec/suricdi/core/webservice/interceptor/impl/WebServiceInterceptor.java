@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlElement;
 import org.slf4j.Logger;
 
 import br.com.surittec.suricdi.core.exception.BusinessException;
+import br.com.surittec.suricdi.core.util.ExceptionUtil;
 import br.com.surittec.suricdi.core.validation.util.ValidationUtil;
 import br.com.surittec.suricdi.core.webservice.exception.ServiceExceptionConverter;
 
@@ -71,12 +72,16 @@ public class WebServiceInterceptor implements Serializable{
 			
 			return ctx.proceed();
 			
-		}catch(BusinessException be){
-			throw exceptionConverter.convert(be);
-			
 		}catch (Exception e) {
-			logger.error("Service Error", e);
-			throw exceptionConverter.convert(e);
+			
+			Throwable rootCause = ExceptionUtil.getRootCause(e);
+			
+			if(rootCause instanceof BusinessException){
+				throw exceptionConverter.convert((BusinessException)rootCause);
+			}else{
+				logger.error("Service Error", rootCause);
+				throw exceptionConverter.convert(rootCause);
+			}
 		}
 	}
 	

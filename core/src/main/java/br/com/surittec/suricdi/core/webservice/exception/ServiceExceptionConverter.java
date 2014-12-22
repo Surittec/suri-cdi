@@ -35,6 +35,6 @@ public interface ServiceExceptionConverter {
 	
 	Exception convert(BusinessException businessException);
 	
-	Exception convert(Exception exception);
+	Exception convert(Throwable exception);
 	
 }
