@@ -33,9 +33,9 @@ import javax.xml.bind.annotation.XmlElement;
 import org.slf4j.Logger;
 
 import br.com.surittec.suricdi.core.exception.BusinessException;
-import br.com.surittec.suricdi.core.util.ExceptionUtil;
 import br.com.surittec.suricdi.core.validation.util.ValidationUtil;
 import br.com.surittec.suricdi.core.webservice.exception.ServiceExceptionConverter;
+import br.com.surittec.util.exception.ExceptionUtil;
 
 /**
  * Interceptor que permite utilizar o bean validation em web services

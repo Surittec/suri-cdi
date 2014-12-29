@@ -20,11 +20,9 @@
  */
 package br.com.surittec.suricdi.core.util;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 /**
  * Utilitario de mensagens
@@ -49,36 +47,7 @@ public abstract class MessageUtil {
 		bundlesName.add(bundleName);
 		bundlesName.add(Constants.SURITTEC_CORE_BUNDLE_BASENAME);
 		
-		return getMessageFromBundle(bundlesName, locale, key, params);
-	}
-	
-	/**
-	 * Retorna a mensagem de acordo com a lista de bundles informados.
-	 * 
-	 * @param bundlesName
-	 * @param locale
-	 * @param key
-	 * @param params
-	 * @return
-	 */
-	public static String getMessageFromBundle(List<String> bundlesName, Locale locale, String key, Object ... params){
-    	for(String bundleName : bundlesName){
-    		ResourceBundle bundle = ResourceBundle.getBundle(bundleName, locale);
-    		if(bundle.containsKey(key)) return formatMessage(bundle.getString(key), params);
-    	}
-    	return formatMessage(key, params);
-    }
-	
-	/**
-	 * Formata a mensagem de acordo com seus parametros
-	 * 
-	 * @param msg
-	 * @param params
-	 * @return
-	 */
-	public static String formatMessage(String msg, Object... params) {
-		if (params == null || params.length == 0) return msg;
-		return new MessageFormat(msg).format(params);
+		return br.com.surittec.util.message.MessageUtil.getMessageFromBundle(bundlesName, locale, key, params);
 	}
 
 }

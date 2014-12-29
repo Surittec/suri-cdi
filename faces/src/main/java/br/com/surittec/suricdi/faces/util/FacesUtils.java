@@ -35,7 +35,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import br.com.surittec.suricdi.core.util.MessageUtil;
+import br.com.surittec.util.message.MessageUtil;
+
 
 /**
  * Classe utilitaria para o JSF
