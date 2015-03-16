@@ -28,6 +28,9 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.apache.commons.lang.StringUtils; 
+
+
 /**
  * Suporte para construção de queries em JPQL.
  *
@@ -94,6 +97,17 @@ public class JPQL {
 	 */
 	public JPQL where(String where){
 		this.where.add(where);
+		return this;
+	}
+	
+	/**
+	 * Inclui cláusulas OR no WHERE para as queries 
+	 * 
+	 * @param where
+	 * @return
+	 */
+	public JPQL or(String ... where){
+		this.where.add(String.format("(%s)", StringUtils.join(where, " OR ")));
 		return this;
 	}
 
