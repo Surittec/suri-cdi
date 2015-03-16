@@ -21,6 +21,7 @@
 package br.com.surittec.suricdi.core.repository.criteria;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +29,7 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.apache.commons.lang.StringUtils; 
+import org.apache.commons.lang.StringUtils;
 
 
 /**
@@ -107,6 +108,16 @@ public class JPQL {
 	 * @return
 	 */
 	public JPQL or(String ... where){
+		return or(where);
+	}
+	
+	/**
+	 * Inclui cláusulas OR no WHERE para as queries 
+	 * 
+	 * @param where
+	 * @return
+	 */
+	public JPQL or(Collection<String> where){
 		this.where.add(String.format("(%s)", StringUtils.join(where, " OR ")));
 		return this;
 	}
