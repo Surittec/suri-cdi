@@ -29,7 +29,7 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import br.com.surittec.suricdi.core.validation.CpfValidator;
+import br.com.surittec.suricdi.core.validation.CnpjValidator;
 
 /**
  * Annotation de definicao do validator de cpf.
@@ -39,7 +39,7 @@ import br.com.surittec.suricdi.core.validation.CpfValidator;
  */
 @Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = CpfValidator.class)
+@Constraint(validatedBy = CnpjValidator.class)
 @Documented
 public @interface Cnpj {
 
