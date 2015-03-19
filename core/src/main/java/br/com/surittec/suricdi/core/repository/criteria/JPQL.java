@@ -75,8 +75,18 @@ public class JPQL {
 	 * @param select
 	 * @return
 	 */
-	public JPQL select(String select){
-		this.select.add(select);
+	public JPQL select(String ... select){
+		return this.select(Arrays.asList(select));
+	}
+	
+	/**
+	 * Inclui cláusulas SELECT para as queries. 
+	 * 
+	 * @param select
+	 * @return
+	 */
+	public JPQL select(Collection<String> selects){
+		this.select.addAll(selects);
 		return this;
 	}
 
@@ -86,8 +96,18 @@ public class JPQL {
 	 * @param from
 	 * @return
 	 */
-	public JPQL from(String from){
-		this.from.add(from);
+	public JPQL from(String ... from){
+		return this.from(Arrays.asList(from));
+	}
+	
+	/**
+	 * Inclui cláusulas FROM para as queries. 
+	 * 
+	 * @param from
+	 * @return
+	 */
+	public JPQL from(Collection<String> froms){
+		this.from.addAll(froms);
 		return this;
 	}
 
@@ -98,19 +118,28 @@ public class JPQL {
 	 * @return
 	 */
 	@Deprecated
-	public JPQL where(String where){
-		this.where.add(where);
-		return this;
+	public JPQL where(String condition){
+		return this.and(condition);
 	}
 	
 	/**
-	 * Inclui cláusulas WHERE para as queries. 
+	 * Inclui cláusulas AND no WHERE para as queries. 
 	 * 
 	 * @param where
 	 * @return
 	 */
-	public JPQL and(String ...condition){
-		this.where.addAll(Arrays.asList(condition));
+	public JPQL and(String ... condition){
+		return this.and(Arrays.asList(condition));
+	}
+	
+	/**
+	 * Inclui cláusulas AND no WHERE para as queries. 
+	 * 
+	 * @param where
+	 * @return
+	 */
+	public JPQL and(Collection<String> conditions){
+		this.where.addAll(conditions);
 		return this;
 	}
 	
@@ -120,8 +149,8 @@ public class JPQL {
 	 * @param where
 	 * @return
 	 */
-	public JPQL or(String ... where){
-		return or(where);
+	public JPQL or(String ... condition){
+		return this.or(Arrays.asList(condition));
 	}
 	
 	/**
@@ -130,9 +159,8 @@ public class JPQL {
 	 * @param where
 	 * @return
 	 */
-	public JPQL or(Collection<String> where){
-		this.where.add(String.format("(%s)", StringUtils.join(where, " OR ")));
-		return this;
+	public JPQL or(Collection<String> conditions){
+		return this.and(String.format("(%s)", StringUtils.join(conditions, " OR ")));
 	}
 
 	/**
@@ -153,8 +181,18 @@ public class JPQL {
 	 * @param group
 	 * @return
 	 */
-	public JPQL groupBy(String group){
-		this.group.add(group);
+	public JPQL groupBy(String ... group){
+		return this.groupBy(Arrays.asList(group));
+	}
+	
+	/**
+	 * Inclui cláusulas GROUP BY para as queries. 
+	 * 
+	 * @param group
+	 * @return
+	 */
+	public JPQL groupBy(Collection<String> groups){
+		this.group.addAll(groups);
 		return this;
 	}
 
@@ -164,11 +202,21 @@ public class JPQL {
 	 * @param order
 	 * @return
 	 */
-	public JPQL orderBy(String order){
-		this.order.add(order);
-		return this;
+	public JPQL orderBy(String ... order){
+		return this.orderBy(Arrays.asList(order));
 	}
 
+	/**
+	 * Inclui cláusulas ORDER BY para as queries. 
+	 * 
+	 * @param order
+	 * @return
+	 */
+	public JPQL orderBy(Collection<String> orders){
+		this.order.addAll(orders);
+		return this;
+	}
+	
 	/**
 	 * Informa qual será o índice do primeiro resultado retornado pela query. 
 	 * 
@@ -258,21 +306,25 @@ public class JPQL {
 		return null;
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder query = new StringBuilder();
+		
+		if(!select.isEmpty()) append(query, "select", select, ",");
+		append(query, "from", from);
+		if(!where.isEmpty()) append(query, "where", where, "and");
+		if(!group.isEmpty()) append(query, "group by", group, ",");
+		if(!order.isEmpty()) append(query, "order by", order, ",");
+		
+		return query.toString();
+	}
+	
 	// ----------------------------------------------------------------------------
     // PRIVATE
     // ----------------------------------------------------------------------------
 	
 	private Query getQuery(){
-
-		StringBuilder queryString = new StringBuilder();
-		
-		if(!select.isEmpty()) append(queryString, "select", select, ",");
-		append(queryString, "from", from);
-		if(!where.isEmpty()) append(queryString, "where", where, "and");
-		if(!group.isEmpty()) append(queryString, "group by", group, ",");
-		if(!order.isEmpty()) append(queryString, "order by", order, ",");
-		
-		Query query = entityManager.createQuery(queryString.toString());
+		Query query = entityManager.createQuery(this.toString());
 		
 		for(String paramName : params.keySet()){
 			query.setParameter(paramName, params.get(paramName));

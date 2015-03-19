@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.ejb.EJBException;
 import javax.el.ELException;
 import javax.faces.FacesException;
 import javax.faces.application.ViewExpiredException;
@@ -70,7 +71,7 @@ public class ExceptionHandler extends ExceptionHandlerWrapper {
 		
 		for (final Iterator<ExceptionQueuedEvent> it = getUnhandledExceptionQueuedEvents().iterator(); it.hasNext();) {
 			Throwable t = it.next().getContext().getException();
-			while ((t instanceof FacesException || t instanceof ELException || t instanceof RollbackException) && t.getCause() != null) {
+			while ((t instanceof FacesException || t instanceof ELException || t instanceof RollbackException || t instanceof EJBException) && t.getCause() != null) {
 				t = t.getCause();
 			}
 			
