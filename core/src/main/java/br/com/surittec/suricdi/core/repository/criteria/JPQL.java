@@ -21,12 +21,17 @@
 package br.com.surittec.suricdi.core.repository.criteria;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
+import org.apache.commons.lang.StringUtils;
+
 
 /**
  * Suporte para construção de queries em JPQL.
@@ -87,13 +92,46 @@ public class JPQL {
 	}
 
 	/**
+	 * Inclui cláusulas WHERE para as queries. Método descontinuado, utilize o método and()
+	 * 
+	 * @param where
+	 * @return
+	 */
+	@Deprecated
+	public JPQL where(String where){
+		this.where.add(where);
+		return this;
+	}
+	
+	/**
 	 * Inclui cláusulas WHERE para as queries. 
 	 * 
 	 * @param where
 	 * @return
 	 */
-	public JPQL where(String where){
-		this.where.add(where);
+	public JPQL and(String ...condition){
+		this.where.addAll(Arrays.asList(condition));
+		return this;
+	}
+	
+	/**
+	 * Inclui cláusulas OR no WHERE para as queries 
+	 * 
+	 * @param where
+	 * @return
+	 */
+	public JPQL or(String ... where){
+		return or(where);
+	}
+	
+	/**
+	 * Inclui cláusulas OR no WHERE para as queries 
+	 * 
+	 * @param where
+	 * @return
+	 */
+	public JPQL or(Collection<String> where){
+		this.where.add(String.format("(%s)", StringUtils.join(where, " OR ")));
 		return this;
 	}
 
