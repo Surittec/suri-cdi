@@ -38,5 +38,13 @@
 		<tag-name>object</tag-name>
 		<source>resources/surittec/facelets/object.xhtml</source>
 	</tag>
+	<tag>
+		<tag-name>cep</tag-name>
+		<source>resources/surittec/facelets/cep.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>mask</tag-name>
+		<source>resources/surittec/facelets/mask.xhtml</source>
+	</tag>
 	
 </facelet-taglib>

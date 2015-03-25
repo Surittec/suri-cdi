@@ -18,20 +18,29 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package br.com.surittec.suricdi.example.util;
+package br.com.surittec.suricdi.core.validation;
 
-import javax.enterprise.inject.Produces;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 
-public class EntityManagerProducer {
+import br.com.surittec.suricdi.core.validation.constraint.Cep;
+import br.com.surittec.util.data.CepUtil;
 
-	@PersistenceContext
-	private EntityManager entityManager;
+/**
+ * 
+ * @author Lucas Lins
+ * 
+ */
+public class CepValidator implements ConstraintValidator<Cep, String>{
+
+	private boolean nullable;
 	
-	@Produces
-	public EntityManager produceEntityManager(){
-		return entityManager;
+	public void initialize(Cep config) {
+		this.nullable = config.nullable();
 	}
-	
+
+	public boolean isValid(String cep, ConstraintValidatorContext constraintContext) {
+		return CepUtil.isValid(cep, nullable);
+	}
+
 }

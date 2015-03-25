@@ -18,20 +18,34 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package br.com.surittec.suricdi.example.util;
+package br.com.surittec.suricdi.core.validation.constraint;
 
-import javax.enterprise.inject.Produces;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class EntityManagerProducer {
+import javax.validation.Constraint;
+import javax.validation.Payload;
 
-	@PersistenceContext
-	private EntityManager entityManager;
-	
-	@Produces
-	public EntityManager produceEntityManager(){
-		return entityManager;
-	}
+import br.com.surittec.suricdi.core.validation.CnpjValidator;
+
+/**
+ * Annotation de definicao do validator de cep.
+ * 
+ * @author lucas lins
+ *
+ */
+@Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
+@Retention(RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = CnpjValidator.class)
+@Documented
+public @interface Cep {
+
+	boolean nullable() default false;
+	String message() default "{javax.validation.constraints.Cep.message}";
+	Class<?>[] groups() default {};
+	Class<? extends Payload>[] payload() default {};
 	
 }

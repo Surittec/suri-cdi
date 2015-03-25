@@ -206,4 +206,119 @@
 	   	   	<type>java.lang.String</type>
 		</attribute>
 	</tag>
+	<tag>
+		<name>cep</name>
+		<tag-class />
+		<body-content>empty</body-content>
+		<description>
+			Utilizado em conjunto com inputMask do Primefaces. Insere mascara, validador e converter.
+		</description>
+		<attribute>
+            <name>autoTab</name>
+            <required>false</required>
+            <type>boolean</type>
+            <description>
+            	Automatically tab when field is completely filled. Default is false. Use for all components, except for generic ones. 
+            	For genric components autotab can be specified within mask attribute.
+            </description>
+        </attribute>
+	</tag>
+	<tag>
+		<name>mask</name>
+		<tag-class />
+		<body-content>empty</body-content>
+		<description>
+			Utilizado em conjunto com inputMask do Primefaces. Insere mascara, validador e converter.
+		</description>
+		<attribute>
+            <name>mask</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+            <description>
+            	The mask to be used on the input
+            </description>
+        </attribute>
+        <attribute>
+            <name>type</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <description>
+            	The mask of this mask. Options: 'fixed' and 'reverse'. Default: fixed
+            </description>
+        </attribute>
+        <attribute>
+            <name>maxLength</name>
+            <required>false</required>
+            <type>java.lang.Integer</type>
+            <description>
+            	The maxLength of the mask. Default: -1
+            </description>
+        </attribute>
+        <attribute>
+            <name>defaultValue</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <description>
+            	The default value for this input. Default: ''
+            </description>
+        </attribute>
+        <attribute>
+            <name>validValue</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <description>
+            	The valid value for this input. Initial value... Default: ''
+            </description>
+        </attribute>
+        <attribute>
+            <name>textAlign</name>
+            <required>false</required>
+            <type>boolean</type>
+            <description>
+            	Use false to not use text-align on any mask 
+            	(at least not by the plugin, you may apply it using css). 
+            	Default: true
+            </description>
+        </attribute>
+        <attribute>
+            <name>selectCharsOnFocus</name>
+            <required>false</required>
+            <type>boolean</type>
+            <description>
+            	Select all chars from input on its focus. Default: true
+            </description>
+        </attribute>
+        <attribute>
+            <name>autoTab</name>
+            <required>false</required>
+            <type>boolean</type>
+            <description>
+            	Auto focus the next form element when you type the mask completely. Default: false
+            </description>
+        </attribute>
+        <attribute>
+            <name>fixedChars</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <description>
+            	Fixed chars to be used on the masks. You may change it for your needs!. Default: '[(),.:/ -]'
+            </description>
+        </attribute>
+        <attribute>
+            <name>converter</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <description>
+            	Converter Id
+            </description>
+        </attribute>
+        <attribute>
+            <name>validator</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <description>
+            	Validator Id
+            </description>
+        </attribute>
+	</tag>
 </taglib>

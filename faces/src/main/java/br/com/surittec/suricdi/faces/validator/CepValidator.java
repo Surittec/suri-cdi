@@ -18,29 +18,36 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package br.com.surittec.suricdi.faces.converter;
+package br.com.surittec.suricdi.faces.validator;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
+import javax.faces.validator.FacesValidator;
+import javax.faces.validator.Validator;
+import javax.faces.validator.ValidatorException;
+
+import br.com.surittec.suricdi.faces.util.FacesUtils;
+import br.com.surittec.util.data.CepUtil;
 
 /**
- * Conversor default de String
+ * Validador de CEP
  * 
  * @author Lucas Lins
- *
+ * 
  */
-@FacesConverter(forClass = String.class)
-public class EmptyToNullConverter implements Converter{
-
-	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		if(value == null || value.trim().equals("")) return null;
-		return value.trim();
-	}
-
-	public String getAsString(FacesContext context, UIComponent component, Object value) {
-		return String.valueOf(value);
+@FacesValidator("br.com.surittec.suricdi.faces.validator.CepValidator")
+public class CepValidator implements Validator{
+	
+	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+		if(!CepUtil.isValid(value, true)){
+			String label = (String)component.getAttributes().get("label");
+			if(label != null && !label.trim().equals("")){
+				throw new ValidatorException(FacesUtils.createMessage(FacesMessage.SEVERITY_ERROR, "javax.faces.validator.CEP.detail", label));
+			}else{
+				throw new ValidatorException(FacesUtils.createMessage(FacesMessage.SEVERITY_ERROR, "javax.faces.validator.CEP"));
+			}
+		}
 	}
 
 }

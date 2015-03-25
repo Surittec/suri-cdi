@@ -18,20 +18,30 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package br.com.surittec.suricdi.example.util;
+package br.com.surittec.suricdi.faces.converter;
 
-import javax.enterprise.inject.Produces;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 
-public class EntityManagerProducer {
+import br.com.surittec.util.data.CepUtil;
 
-	@PersistenceContext
-	private EntityManager entityManager;
+/**
+ * Conversor de CEP
+ * 
+ * @author Lucas Lins
+ *
+ */
+@FacesConverter("br.com.surittec.suricdi.faces.converter.CepConverter")
+public class CepConverter implements Converter{
 	
-	@Produces
-	public EntityManager produceEntityManager(){
-		return entityManager;
+	public Object getAsObject(FacesContext context, UIComponent component, String value) {
+		return CepUtil.unformat(value);
 	}
-	
+
+	public String getAsString(FacesContext context, UIComponent component, Object value) {
+		return CepUtil.format((String)value);
+	}
+
 }
