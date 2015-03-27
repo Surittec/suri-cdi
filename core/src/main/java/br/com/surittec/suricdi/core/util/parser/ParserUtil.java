@@ -22,7 +22,10 @@ package br.com.surittec.suricdi.core.util.parser;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.deltaspike.core.api.provider.BeanProvider;
@@ -30,6 +33,10 @@ import org.apache.deltaspike.core.api.provider.BeanProvider;
 public abstract class ParserUtil {
 
 	private static Map<Class<?>, Map<Class<?>, Class<? extends Parser<?, ?>>>> parsersMap = new HashMap<Class<?>, Map<Class<?>, Class<? extends Parser<?, ?>>>>();
+	
+	/*
+	 * Default Methods
+	 */
 	
 	static void register(Class<? extends Parser<?,?>> parserClass){
 		ParameterizedType parameterizedType = null;
@@ -60,14 +67,29 @@ public abstract class ParserUtil {
 		fromMap.put(to, parserClass);
 	}
 	
+	/*
+	 * Public Methods
+	 */
+	
+	public static <F,T> T parse(F from, Class<T> toClass){
+		return getParser(from, toClass).parse(from);
+	}
+	
+	public static <F,T> List<T> parseList(List<F> listFrom, Class<T> toClass){
+		if(listFrom == null || listFrom.isEmpty()) return Collections.emptyList();
+		Parser<F, T> parser = getParser(listFrom.get(0), toClass);
+		List<T> listTo = new ArrayList<T>();
+		for(F from : listFrom) listTo.add(parser.parse(from));
+		return listTo;
+	}
+	
 	@SuppressWarnings("unchecked")
-	public static <T,F> T parse(F from, Class<T> toClass){
+	public static <F,T> Parser<F,T> getParser(F from, Class<T> toClass){ 
 		Map<Class<?>, Class<? extends Parser<?,?>>> fromMap = parsersMap.get(from.getClass());
 		if(fromMap != null){
 			Class<? extends Parser<?,?>> parserClass = fromMap.get(toClass);
 			if(parserClass != null){
-				Parser<F,T> parser = (Parser<F,T>) BeanProvider.getContextualReference(parserClass);
-				return parser.parse(from);
+				return (Parser<F,T>) BeanProvider.getDependent(parserClass).get();
 			}
 		}
 		throw new RuntimeException(String.format("Parser from %s to %s not found", from.getClass().getName(), toClass.getName()));

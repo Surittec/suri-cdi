@@ -20,7 +20,6 @@
  */
 package br.com.surittec.suricdi.core.util.parser;
 
-import javax.enterprise.context.RequestScoped;
 
 /**
  * Interface comum de todos os parsers.
@@ -28,7 +27,6 @@ import javax.enterprise.context.RequestScoped;
  * T: to
  * 
  */
-@RequestScoped
 public interface Parser<F, T> {
 
 	T parse(F from);
