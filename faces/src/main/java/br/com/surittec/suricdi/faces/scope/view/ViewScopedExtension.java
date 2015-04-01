@@ -27,6 +27,7 @@ import javax.faces.bean.ViewScoped;
 
 import org.apache.deltaspike.core.spi.activation.Deactivatable;
 import org.apache.deltaspike.core.util.ClassDeactivationUtils;
+import org.apache.deltaspike.core.util.ClassUtils;
 
 /**
  * <p>This CDI extension enables support for the new JSF-2 &#064;ViewScoped annotation.</p>
@@ -61,7 +62,12 @@ public class ViewScopedExtension implements Extension, Deactivatable
         {
             return;
         }
-
+        
+        //this extension is only needed if the cdi-based view-scope handling isn't delegated to jsf 2.2+
+        if(isViewScopeDelegationEnabled()){
+        	return;
+        }
+        
         beforeBeanDiscovery.addScope(ViewScoped.class, true, true);
     }
 
@@ -79,5 +85,9 @@ public class ViewScopedExtension implements Extension, Deactivatable
         
         afterBeanDiscovery.addContext(new ViewScopedContext(beanManager));
     }
-
+    
+    private boolean isViewScopeDelegationEnabled()
+    {
+        return ClassUtils.tryToLoadClassForName("javax.faces.view.ViewScoped") != null;
+    }
 }

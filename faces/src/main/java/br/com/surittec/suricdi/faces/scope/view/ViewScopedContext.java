@@ -41,7 +41,7 @@ import org.apache.deltaspike.core.util.context.ContextualStorage;
  */
 public class ViewScopedContext extends AbstractContext implements SystemEventListener
 {
-	private static final String CONTEXTUAL_MAP_NAME = "deltaspike.contextualInstanceMap";
+    private static final String CONTEXTUAL_MAP_NAME = "deltaspike.contextualInstanceMap";
 
     private boolean isJsfSubscribed = false;
 
