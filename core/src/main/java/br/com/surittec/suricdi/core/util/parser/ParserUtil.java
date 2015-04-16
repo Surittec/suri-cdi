@@ -72,6 +72,7 @@ public abstract class ParserUtil {
 	 */
 	
 	public static <F,T> T parse(F from, Class<T> toClass){
+		if(from == null) return null;
 		return getParser(from, toClass).parse(from);
 	}
 	
