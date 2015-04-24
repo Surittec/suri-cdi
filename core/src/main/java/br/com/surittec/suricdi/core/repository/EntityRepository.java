@@ -139,11 +139,31 @@ public abstract class EntityRepository<E, PK extends Serializable> {
 	}
 
 	/**
+	 * Same as {@link EntityRepository#refresh(Object)} but returns the entity.
+	 * @param entity            Entity to refresh.
+	 * @return Entity to refresh.
+	 */
+	public E refreshed(E entity) {
+		refresh(entity);
+		return entity;
+	}
+
+	/**
 	 * Convenience access to {@link javax.persistence.EntityManager#refresh(Object)}.
 	 * @param entities            Entities to refresh.
 	 */
 	public void refresh(Collection<E> entities) {
 		for(E e : entities) refresh(e);
+	}
+
+	/**
+	 * Same as {@link EntityRepository#refresh(Collection)} but returns the collection.
+	 * @param entities            Entities to refresh.
+	 * @return Entities refreshed
+	 */
+	public <T extends Collection<E>> T refreshed(T entities) {
+		refresh(entities);
+		return entities;
 	}
 
 	/**
@@ -172,6 +192,16 @@ public abstract class EntityRepository<E, PK extends Serializable> {
 	}
 
 	/**
+	 * Same as {@link EntityRepository#detach(Object)} but returns the entity.
+	 * @param entity
+	 * @return the entity detached
+	 */
+	public E detached(E entity) {
+		detach(entity);
+		return entity;
+	}
+
+	/**
 	 * Remove the given entities from the persistence context, causing
 	 * a managed entities to become detached.  Unflushed changes made
 	 * to the entities if any (including removal of the entities),
@@ -183,6 +213,17 @@ public abstract class EntityRepository<E, PK extends Serializable> {
 	 */
 	public void detach(Collection<E> entities) {
 		for(E e : entities) detach(e);
+	}
+
+	/**
+	 * Same as {@link EntityRepository#detach(Collection)} but returns the collection.
+	 * @param entities  entities instances
+	 * @return entities detached
+	 * @throws IllegalArgumentException if the instance is not an entity
+	 */
+	public <T extends Collection<E>> T detached(T entities) {
+		detach(entities);
+		return entities;
 	}
 
 	/**
