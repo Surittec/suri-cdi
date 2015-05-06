@@ -1,53 +1,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
+
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>br.com.surittec</groupId>
 		<artifactId>suri-cdi</artifactId>
 		<version>2.0.0</version>
 	</parent>
-	
-	<artifactId>suri-cdi-faces</artifactId>
+
+	<artifactId>suri-cdi-jpa</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Suri CDI Faces</name>
+	<name>Suri CDI JPA</name>
 
 	<dependencies>
 		
 		<!-- javax -->
 		
 		<dependency>
-			<groupId>org.jboss.spec.javax.servlet</groupId>
-			<artifactId>jboss-servlet-api_3.0_spec</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.jboss.spec.javax.el</groupId>
-			<artifactId>jboss-el-api_2.2_spec</artifactId>
-		</dependency>
-		
-		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
-		</dependency>
-		
-		<!-- jsf -->
-		
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-		</dependency>
-		
-		<dependency>
-		   <groupId>org.ocpsoft.rewrite</groupId>
-		   <artifactId>rewrite-integration-cdi</artifactId>
 		</dependency>
 		
 		<!-- Surittec -->
@@ -59,8 +32,9 @@
 		
 		<dependency>
 			<groupId>br.com.surittec</groupId>
-			<artifactId>suri-faces</artifactId>
+			<artifactId>suri-jpa</artifactId>
 		</dependency>
 		
 	</dependencies>
+
 </project>

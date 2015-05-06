@@ -18,22 +18,26 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package br.com.surittec.suricdi.core.webservice.exception;
+package br.com.surittec.suricdi.jpa.repository;
 
-import br.com.surittec.util.exception.BusinessException;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+
+import br.com.surittec.surijpa.repository.GenericEntityRepositorySupport;
 
 /**
- * Interface que o conversor de uma business exception devera implementar
- * 
- * @author Lucas Lins
- *
+ * Suporte para classes de persistência, com encapsulamento do uso do
+ * {@link javax.persistence.EntityManager} e provendo algumas operações
+ * necessárias manter ou pesquisar entidades.
  */
-public interface ServiceExceptionConverter {
+public abstract class GenericEntityRepository extends GenericEntityRepositorySupport {
 
-	String getValidationErrorCode();
+	@Inject
+	protected EntityManager entityManager;
 
-	Exception convert(BusinessException businessException);
-
-	Exception convert(Throwable exception);
+	@Override
+	protected EntityManager getEntityManager() {
+		return entityManager;
+	}
 
 }

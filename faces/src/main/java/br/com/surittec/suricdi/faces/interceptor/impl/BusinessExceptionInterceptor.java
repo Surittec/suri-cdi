@@ -27,32 +27,33 @@ import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
-import br.com.surittec.suricdi.core.exception.BusinessException;
 import br.com.surittec.suricdi.faces.interceptor.BusinessMessages;
-import br.com.surittec.suricdi.faces.util.FacesUtils;
+import br.com.surittec.surifaces.util.FacesUtils;
+import br.com.surittec.util.exception.BusinessException;
 import br.com.surittec.util.message.Message;
 
 /**
- * Interceptor que captura excecoes de negocio e adiciona as mensagens no FacesMessages
+ * Interceptor que captura excecoes de negocio e adiciona as mensagens no
+ * FacesMessages
  * 
  * @author Lucas Lins
  *
  */
 @Interceptor
 @BusinessMessages
-public class BusinessExceptionInterceptor implements Serializable{
-	
+public class BusinessExceptionInterceptor implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@AroundInvoke
-	public Object appendMessages(InvocationContext ctx) throws Exception{
-		try{
+	public Object appendMessages(InvocationContext ctx) throws Exception {
+		try {
 			return ctx.proceed();
-		}catch (BusinessException be) {
-			for(Message error : be.getErrors()) {
-				if(error.getComponent() != null){
+		} catch (BusinessException be) {
+			for (Message error : be.getErrors()) {
+				if (error.getComponent() != null) {
 					FacesUtils.addMsgToComponent(error.getComponent(), FacesMessage.SEVERITY_ERROR, error.getMessage(), error.getMessageParams());
-				}else{
+				} else {
 					FacesUtils.addMsg(FacesMessage.SEVERITY_ERROR, error.getMessage(), error.getMessageParams());
 				}
 			}
