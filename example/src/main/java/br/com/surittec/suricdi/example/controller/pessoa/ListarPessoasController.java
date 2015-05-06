@@ -32,40 +32,40 @@ import br.com.surittec.suricdi.faces.controller.Controller;
 import br.com.surittec.suricdi.faces.controller.stereotype.ViewController;
 
 @ViewController
-@Join(path="/cadastro/pessoa", to="/view/cadastro/pessoa/listar.xhtml")
-public class ListarPessoasController extends Controller{
+@Join(path = "/cadastro/pessoa", to = "/view/cadastro/pessoa/listar.xhtml")
+public class ListarPessoasController extends Controller {
 
 	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private PessoaService pessoaService;
-	
+
 	private String nome;
-	
+
 	private List<Pessoa> pessoas;
-	
+
 	/*
 	 * Init
 	 */
-	
+
 	@Override
 	public String requestAction() {
 		pessoas = pessoaService.findAll(Pessoa.class);
 		return null;
 	}
-	
+
 	/*
 	 * Public Methods
 	 */
-	
-	public void pesquisar(){
+
+	public void pesquisar() {
 		pessoas = pessoaService.findByNome(nome);
 	}
 
 	/*
 	 * Gets & Sets
 	 */
-	
+
 	public List<Pessoa> getPessoas() {
 		return pessoas;
 	}
@@ -81,5 +81,5 @@ public class ListarPessoasController extends Controller{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 }

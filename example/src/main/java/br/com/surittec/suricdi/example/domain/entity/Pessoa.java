@@ -33,8 +33,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import br.com.surittec.suricdi.core.validation.constraint.Cpf;
-import br.com.surittec.suricdi.core.validation.constraint.Email;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.br.CPF;
+
 import br.com.surittec.suricdi.example.domain.enums.Sexo;
 
 @Entity
@@ -45,30 +46,29 @@ public class Pessoa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", updatable = false, unique = true, nullable = false)
 	private Long id;
-	
+
 	@Column(name = "nome", length = 100, nullable = false)
 	private String nome;
-	
-	@Cpf
+
+	@CPF
 	@Column(name = "cpf", length = 11, unique = true, nullable = false)
 	private String cpf;
-	
+
 	@Email
 	@Column(name = "email", length = 100, unique = true, nullable = false)
 	private String email;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dataNascimento")
 	private Date dataNascimento;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "sexo", length = 1)
 	private Sexo sexo;
-	
+
 	@Column(name = "altura", precision = 1, scale = 2)
 	private Double altura;
 
-	
 	public Long getId() {
 		return id;
 	}
@@ -124,5 +124,5 @@ public class Pessoa {
 	public void setAltura(Double altura) {
 		this.altura = altura;
 	}
-	
+
 }

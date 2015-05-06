@@ -22,6 +22,7 @@ package br.com.surittec.suricdi.faces.interceptor.impl;
 
 import java.io.Serializable;
 
+import javax.ejb.EJBException;
 import javax.faces.application.FacesMessage;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
@@ -30,6 +31,7 @@ import javax.interceptor.InvocationContext;
 import br.com.surittec.suricdi.faces.interceptor.BusinessMessages;
 import br.com.surittec.surifaces.util.FacesUtils;
 import br.com.surittec.util.exception.BusinessException;
+import br.com.surittec.util.exception.ExceptionUtil;
 import br.com.surittec.util.message.Message;
 
 /**
@@ -50,15 +52,26 @@ public class BusinessExceptionInterceptor implements Serializable {
 		try {
 			return ctx.proceed();
 		} catch (BusinessException be) {
-			for (Message error : be.getErrors()) {
-				if (error.getComponent() != null) {
-					FacesUtils.addMsgToComponent(error.getComponent(), FacesMessage.SEVERITY_ERROR, error.getMessage(), error.getMessageParams());
-				} else {
-					FacesUtils.addMsg(FacesMessage.SEVERITY_ERROR, error.getMessage(), error.getMessageParams());
-				}
+			return catchBusinessException(be);
+		} catch (EJBException e) {
+			Throwable t = ExceptionUtil.getRootCause(e);
+			if (t instanceof BusinessException) {
+				return catchBusinessException((BusinessException) t);
+			} else {
+				throw e;
 			}
-			return null;
 		}
+	}
+
+	private Object catchBusinessException(BusinessException be) {
+		for (Message error : be.getErrors()) {
+			if (error.getComponent() != null) {
+				FacesUtils.addMsgToComponent(error.getComponent(), FacesMessage.SEVERITY_ERROR, error.getMessage(), error.getMessageParams());
+			} else {
+				FacesUtils.addMsg(FacesMessage.SEVERITY_ERROR, error.getMessage(), error.getMessageParams());
+			}
+		}
+		return null;
 	}
 
 }

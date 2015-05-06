@@ -25,45 +25,45 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import br.com.surittec.suricdi.core.service.EntityService;
-import br.com.surittec.suricdi.core.util.Assert;
 import br.com.surittec.suricdi.example.domain.entity.Pessoa;
 import br.com.surittec.suricdi.example.domain.repository.GenericEntityRepository;
 import br.com.surittec.suricdi.example.domain.repository.PessoaRepository;
 import br.com.surittec.suricdi.example.util.i18n.Messages;
+import br.com.surittec.suricdi.jpa.service.EntityService;
+import br.com.surittec.util.validation.Assert;
 
 @Stateless
-public class PessoaService extends EntityService{
-	
+public class PessoaService extends EntityService {
+
 	@Inject
 	private GenericEntityRepository genericEntityRepository;
-	
+
 	@Inject
 	private PessoaRepository pessoaRepository;
-	
+
 	@Inject
 	private Messages messages;
-	
+
 	/*
 	 * Protected Methods
 	 */
-	
+
 	@Override
-	protected br.com.surittec.suricdi.core.repository.GenericEntityRepository getGenericEntityRepository() {
+	protected GenericEntityRepository getGenericEntityRepository() {
 		return genericEntityRepository;
 	}
-	
+
 	/*
 	 * Public Methods
 	 */
-	
-	public List<Pessoa> findByNome(String nome){
+
+	public List<Pessoa> findByNome(String nome) {
 		return pessoaRepository.findByNome(nome);
 	}
-	
-	public void save(Pessoa pessoa){
+
+	public void save(Pessoa pessoa) {
 		Assert.isTrue(pessoaRepository.isUnique(pessoa), messages.pessoaCadastroFalhaUnicidade());
-		
+
 		super.save(pessoa);
 	}
 }

@@ -39,13 +39,13 @@
 					
 					<e:field id="cpfField" fieldId="cpfInput" label="#{labels['campo.cpf']}" inputStyle="col-lg-3" required="true">
 						<p:inputMask id="cpfInput" value="#{manterPessoaController.pessoa.cpf}" styleClass="form-control" required="true">
-							<s:cpf />
+							<s:cpf beanValidation="true"/>
 						</p:inputMask>
 					</e:field>
 					
 					<e:field id="emailField" fieldId="emailInput" label="#{labels['campo.email']}" inputStyle="col-lg-3" required="true">
 						<h:inputText id="emailInput" value="#{manterPessoaController.pessoa.email}" maxlength="100" styleClass="form-control" required="true">
-							<s:email />
+							<s:email beanValidation="true"/>
 						</h:inputText>
 					</e:field>
 					
