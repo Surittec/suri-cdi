@@ -13,6 +13,8 @@ import org.quartz.listeners.TriggerListenerSupport;
 import org.quartz.spi.ClassLoadHelper;
 import org.quartz.spi.SchedulerPlugin;
 
+import br.com.surittec.suricdi.scheduler.annotation.JobVetoable;
+
 public class VetoJobPlugin extends TriggerListenerSupport implements SchedulerPlugin {
 
 	private String name;
@@ -36,8 +38,7 @@ public class VetoJobPlugin extends TriggerListenerSupport implements SchedulerPl
 	public boolean vetoJobExecution(Trigger trigger, JobExecutionContext context) {
 //		ProjectStage projectStage = BeanProvider.getContextualReference(ProjectStage.class);
 		ProjectStage projectStage = BeanProvider.getDependent(ProjectStage.class).get();
-		br.com.VetoJobPlugin.govcorp.batch.interceptor.JobVetoable vetoAnnotation =
-				context.getJobDetail().getJobClass().getAnnotation(br.com.VetoJobPlugin.govcorp.batch.interceptor.JobVetoable.class);
+		JobVetoable vetoAnnotation = context.getJobDetail().getJobClass().getAnnotation(JobVetoable.class);
 		if (vetoAnnotation != null) {
 			return !Arrays.asList(vetoAnnotation.runnableProjectStages()).contains(projectStage.getClass().getSimpleName());
 		}
