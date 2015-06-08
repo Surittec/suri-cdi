@@ -77,9 +77,9 @@ public abstract class ParserUtil {
 	}
 	
 	public static <F,T> List<T> parseList(List<F> listFrom, Class<T> toClass){
-		if(listFrom == null || listFrom.isEmpty()) return Collections.emptyList();
-		Parser<F, T> parser = getParser(listFrom.get(0), toClass);
 		List<T> listTo = new ArrayList<T>();
+		if(listFrom == null || listFrom.isEmpty()) return listTo;
+		Parser<F, T> parser = getParser(listFrom.get(0), toClass);
 		for(F from : listFrom) listTo.add(parser.parse(from));
 		return listTo;
 	}
