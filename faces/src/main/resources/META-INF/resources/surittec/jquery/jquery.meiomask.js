@@ -97,7 +97,8 @@ $ = jQuery;
 				'a': /[a-zA-Z]/,
 				'*': /[0-9a-zA-Z]/,
 				'@': /[0-9a-zA-ZחÇבאדגיטךםלףעפץתשü]/,
-				'H': /[0-9a-fA-F]/
+				'H': /[0-9a-fA-F]/,
+				'X': /[0-9xX]/
 			},
 			
 			// these keys will be ignored by the mask.
