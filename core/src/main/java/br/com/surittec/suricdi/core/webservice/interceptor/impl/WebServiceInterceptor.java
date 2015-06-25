@@ -21,26 +21,21 @@
 package br.com.surittec.suricdi.core.webservice.interceptor.impl;
 
 import java.io.Serializable;
-import java.lang.annotation.Annotation;
 
 import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
-import javax.jws.WebParam;
-import javax.xml.bind.annotation.XmlElement;
 
 import org.slf4j.Logger;
 
 import br.com.surittec.suricdi.core.webservice.exception.ServiceExceptionConverter;
 import br.com.surittec.surivalidation.exception.ValidationException;
-import br.com.surittec.surivalidation.util.ValidationUtil;
 import br.com.surittec.util.exception.BusinessException;
 import br.com.surittec.util.exception.ExceptionUtil;
 
 /**
- * Interceptor que permite utilizar o bean validation em web services e
- * converter business exception em uma exception do web service.
+ * Interceptor que converte exceptions em uma exception de web service.
  * 
  * @author Lucas Lins
  *
@@ -61,59 +56,25 @@ public class WebServiceInterceptor implements Serializable {
 	public Object intercept(InvocationContext ctx) throws Exception {
 		try {
 
-			ValidationUtil.validateMethod(
-					ctx.getTarget(),
-					ctx.getMethod(),
-					getParameterNames(ctx),
-					ctx.getParameters(),
-					exceptionConverter.getValidationErrorCode());
-
 			return ctx.proceed();
 
 		} catch (Exception e) {
 
 			Throwable rootCause = ExceptionUtil.getRootCause(e);
 
-			if (rootCause instanceof ValidationException) {
+			 if (rootCause instanceof BusinessException) {
+				throw exceptionConverter.convert((BusinessException) rootCause);
+			
+			 }else if (rootCause instanceof ValidationException) {
 				BusinessException be = new BusinessException();
 				be.getErrors().addAll(((ValidationException) rootCause).getErrors());
 				throw exceptionConverter.convert(be);
-
-			} else if (rootCause instanceof BusinessException) {
-				throw exceptionConverter.convert((BusinessException) rootCause);
 
 			} else {
 				logger.error("Service Error", rootCause);
 				throw exceptionConverter.convert(rootCause);
 			}
 		}
-	}
-
-	/*
-	 * Private Methods
-	 */
-
-	private String[] getParameterNames(InvocationContext ctx) {
-		String[] parameterNames = new String[ctx.getParameters().length];
-		Annotation[][] paramsAnnotations = ctx.getMethod().getParameterAnnotations();
-		for (int i = 0; i < paramsAnnotations.length; i++) {
-			parameterNames[i] = getParameterName(i, paramsAnnotations[i]);
-		}
-		return parameterNames;
-	}
-
-	private String getParameterName(int paramIndex, Annotation[] paramAnnotations) {
-		for (Annotation a : paramAnnotations) {
-			if (a instanceof XmlElement) {
-				return ((XmlElement) a).name();
-			}
-
-			if (a instanceof WebParam) {
-				return ((WebParam) a).name();
-			}
-		}
-
-		return String.format("arg%d", paramIndex);
 	}
 
 }

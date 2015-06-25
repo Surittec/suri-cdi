@@ -65,7 +65,7 @@ public class BusinessExceptionInterceptor implements Serializable {
 
 	private Object catchBusinessException(BusinessException be) {
 		for (Message error : be.getErrors()) {
-			if (error.getComponent() != null) {
+			if (error.getComponent() != null && FacesUtils.getContext().getViewRoot().findComponent(error.getComponent()) != null) {
 				FacesUtils.addMsgToComponent(error.getComponent(), FacesMessage.SEVERITY_ERROR, error.getMessage(), error.getMessageParams());
 			} else {
 				FacesUtils.addMsg(FacesMessage.SEVERITY_ERROR, error.getMessage(), error.getMessageParams());

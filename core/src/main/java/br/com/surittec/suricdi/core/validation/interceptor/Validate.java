@@ -18,33 +18,34 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package br.com.surittec.suricdi.core.webservice.interceptor;
+package br.com.surittec.suricdi.core.validation.interceptor;
+
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
+import javax.enterprise.util.Nonbinding;
 import javax.interceptor.InterceptorBinding;
 
-import br.com.surittec.suricdi.core.validation.interceptor.Validate;
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
 /**
- * Interceptor que permite utilizar o bean validation em web services
- * e converter business exception em uma exception do web service.
+ * Interceptor que permite utilizar o bean validation em qualquer metodo.
  * 
  * @author Lucas Lins
  *
  */
-@Validate
 @InterceptorBinding
 @Inherited
 @Target({ TYPE, METHOD })
 @Retention(RUNTIME)
 @Documented
-public @interface WebServiceInterceptor {
+public @interface Validate {
 
+	@Nonbinding
+	Class<?>[] groups() default {};
+	
 }
