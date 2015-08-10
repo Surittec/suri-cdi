@@ -10,7 +10,7 @@
 	</parent>
 	
 	<artifactId>suri-cdi</artifactId>
-	<version>2.0.1</version>
+	<version>2.0.2</version>
 	<packaging>pom</packaging>
 
 	<name>Suri CDI</name>
@@ -250,6 +250,7 @@
 		<module>jpa</module>
 		<module>faces</module>
 		<module>scheduler</module>
+		<module>sqs</module>
 	</modules>
 	
 	<dependencies>
@@ -283,14 +284,14 @@
 	</dependencies>
 	
 	<properties>
- 		<eap-bom.version>6.4.0</eap-bom.version>
+ 		<eap-bom.version>6.4.1</eap-bom.version>
  		
 		<rewrite.version>2.0.12.Final</rewrite.version>
 		
 		<deltaspike.version>1.3.0</deltaspike.version>
 		
-		<suri-util.version>1.0.5</suri-util.version>
-		<suri-quartz.version>1.0.2</suri-quartz.version>
+		<suri-util.version>1.0.6</suri-util.version>
+		<suri-quartz.version>1.0.3</suri-quartz.version>
 		<suri-jpa.version>1.0.1</suri-jpa.version>
 		<suri-validation.version>1.0.1</suri-validation.version>
 		<suri-faces.version>1.0.1</suri-faces.version>
