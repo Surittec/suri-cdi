@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>br.com.surittec</groupId>
+		<artifactId>suri-cdi</artifactId>
+		<version>2.0.2</version>
+	</parent>
+
+	<artifactId>suri-cdi-sqs</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Suri CDI SQS</name>
+
+	<dependencies>
+		
+		<!-- Surittec -->
+		
+		<dependency>
+			<groupId>br.com.surittec</groupId>
+			<artifactId>suri-cdi-core</artifactId>
+		</dependency>	
+	
+		<!-- Apache Commons Pool -->
+	
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+		</dependency>
+		
+		<!-- Generic JMS Pool -->
+				
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-jms-pool</artifactId>
+			<version>${activemq-jms-pool.version}</version>
+			<scope>compile</scope>
+		</dependency>
+	
+		<!-- Amazon AWS SDK -->
+		
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>amazon-sqs-java-messaging-lib</artifactId>
+			<version>${aws-sqs-lib.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		
+	</dependencies>
+	
+	<properties>
+		<activemq-jms-pool.version>5.11.1</activemq-jms-pool.version>
+ 		<aws-sqs-lib.version>1.0.0</aws-sqs-lib.version>
+	</properties>
+	
+</project>
