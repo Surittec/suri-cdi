@@ -290,7 +290,7 @@
 		<deltaspike.version>1.3.0</deltaspike.version>
 		
 		<suri-util.version>1.0.5</suri-util.version>
-		<suri-quartz.version>1.0.1</suri-quartz.version>
+		<suri-quartz.version>1.0.2</suri-quartz.version>
 		<suri-jpa.version>1.0.1</suri-jpa.version>
 		<suri-validation.version>1.0.1</suri-validation.version>
 		<suri-faces.version>1.0.1</suri-faces.version>
