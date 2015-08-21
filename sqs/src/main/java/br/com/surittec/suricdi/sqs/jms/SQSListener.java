@@ -31,6 +31,9 @@ import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Stereotype;
 import javax.jms.Session;
 
+import br.com.surittec.suricdi.sqs.context.SQSContextControl;
+
+@SQSContextControl
 @Dependent
 @Stereotype
 @Documented

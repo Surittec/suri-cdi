@@ -175,6 +175,13 @@
 				<scope>compile</scope>
 			</dependency>
 			
+			<dependency>
+				<groupId>org.apache.deltaspike.cdictrl</groupId>
+				<artifactId>deltaspike-cdictrl-weld</artifactId>
+				<version>${deltaspike.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			
 			<!-- Suittec -->
 			
 			<dependency>
