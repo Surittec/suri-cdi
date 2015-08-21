@@ -30,6 +30,18 @@
 			<artifactId>commons-pool</artifactId>
 		</dependency>
 		
+		<!-- deltaspike -->
+		
+		<dependency>
+			<groupId>org.apache.deltaspike.cdictrl</groupId>
+			<artifactId>deltaspike-cdictrl-api</artifactId>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.apache.deltaspike.cdictrl</groupId>
+			<artifactId>deltaspike-cdictrl-weld</artifactId>
+		</dependency>
+		
 		<!-- Generic JMS Pool -->
 				
 		<dependency>
