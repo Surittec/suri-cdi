@@ -27,7 +27,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import javax.enterprise.util.Nonbinding;
 import javax.interceptor.InterceptorBinding;
+
+import br.com.surittec.suricdi.faces.interceptor.util.BusinessExceptionRedirectResolver;
 
 /**
  * Annotation de marcacao para ser interceptada
@@ -38,6 +41,11 @@ import javax.interceptor.InterceptorBinding;
 @Documented
 @Inherited
 @InterceptorBinding
-@Target(ElementType.TYPE)
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface BusinessMessages {}
+public @interface BusinessMessages {
+	
+	@Nonbinding
+	Class<? extends BusinessExceptionRedirectResolver> resolver() default BusinessExceptionRedirectResolver.class;
+	
+}

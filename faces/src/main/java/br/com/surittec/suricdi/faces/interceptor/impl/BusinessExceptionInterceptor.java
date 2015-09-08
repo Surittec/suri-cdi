@@ -28,7 +28,10 @@ import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
+import org.apache.deltaspike.core.api.provider.BeanProvider;
+
 import br.com.surittec.suricdi.faces.interceptor.BusinessMessages;
+import br.com.surittec.suricdi.faces.interceptor.util.BusinessExceptionRedirectResolver;
 import br.com.surittec.surifaces.util.FacesUtils;
 import br.com.surittec.util.exception.BusinessException;
 import br.com.surittec.util.exception.ExceptionUtil;
@@ -52,18 +55,18 @@ public class BusinessExceptionInterceptor implements Serializable {
 		try {
 			return ctx.proceed();
 		} catch (BusinessException be) {
-			return catchBusinessException(be);
+			return catchBusinessException(ctx, be);
 		} catch (EJBException e) {
 			Throwable t = ExceptionUtil.getRootCause(e);
 			if (t instanceof BusinessException) {
-				return catchBusinessException((BusinessException) t);
+				return catchBusinessException(ctx, (BusinessException) t);
 			} else {
 				throw e;
 			}
 		}
 	}
 
-	private Object catchBusinessException(BusinessException be) {
+	private String catchBusinessException(InvocationContext ctx, BusinessException be) {
 		for (Message error : be.getErrors()) {
 			if (error.getComponent() != null && FacesUtils.getContext().getViewRoot().findComponent(error.getComponent()) != null) {
 				FacesUtils.addMsgToComponent(error.getComponent(), FacesMessage.SEVERITY_ERROR, error.getMessage(), error.getMessageParams());
@@ -71,7 +74,21 @@ public class BusinessExceptionInterceptor implements Serializable {
 				FacesUtils.addMsg(FacesMessage.SEVERITY_ERROR, error.getMessage(), error.getMessageParams());
 			}
 		}
-		return null;
+		return resolveRedirect(ctx, be);
 	}
 
+	private String resolveRedirect(InvocationContext ctx, BusinessException be){
+		BusinessMessages bm = ctx.getMethod().getAnnotation(BusinessMessages.class);
+		if(bm == null){
+			bm = ctx.getTarget().getClass().getAnnotation(BusinessMessages.class);
+		}
+		
+		if(BusinessExceptionRedirectResolver.class != bm.resolver()){
+			BusinessExceptionRedirectResolver resolver = BeanProvider.getContextualReference(bm.resolver());
+			resolver.handleNavigation(be);
+		}
+		
+		return null;
+	}
+	
 }
