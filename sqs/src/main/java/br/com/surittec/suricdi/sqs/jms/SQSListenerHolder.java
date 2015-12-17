@@ -103,7 +103,7 @@ public class SQSListenerHolder implements Serializable {
 	}
 	
 	private String getQueueName(){
-		return BeanProvider.getDependent(SQSQueueNameResolver.class).get().resolve(sqsListener, messageListenerClass);
+		return BeanProvider.getContextualReference(SQSQueueNameResolver.class).resolve(sqsListener.queue());
 	}
 	
 	private void checkQueue() throws JMSException{

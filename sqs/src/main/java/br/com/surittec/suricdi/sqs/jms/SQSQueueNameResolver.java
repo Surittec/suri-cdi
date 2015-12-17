@@ -20,14 +20,13 @@
  */
 package br.com.surittec.suricdi.sqs.jms;
 
-import javax.enterprise.context.Dependent;
-import javax.jms.MessageListener;
+import javax.enterprise.context.ApplicationScoped;
 
-@Dependent
+@ApplicationScoped
 public class SQSQueueNameResolver{
 	
-	public String resolve(SQSListener sqsListener, Class<? extends MessageListener> messageListenerClass){
-		return sqsListener.queue();
+	public String resolve(String queue){
+		return queue;
 	}
 	
 }
