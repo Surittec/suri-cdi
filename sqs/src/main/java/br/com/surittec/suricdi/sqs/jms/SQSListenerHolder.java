@@ -28,9 +28,15 @@ import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.Session;
 
+import org.apache.activemq.jms.pool.PooledConnection;
 import org.apache.deltaspike.core.api.provider.BeanProvider;
 
 import br.com.surittec.suricdi.sqs.pool.PooledConnectionFactory;
+
+import com.amazon.sqs.javamessaging.SQSConnection;
+import com.amazonaws.services.sqs.AmazonSQS;
+import com.amazonaws.services.sqs.model.CreateQueueRequest;
+import com.amazonaws.services.sqs.model.QueueDoesNotExistException;
 
 public class SQSListenerHolder implements Serializable {
 
@@ -45,6 +51,8 @@ public class SQSListenerHolder implements Serializable {
 	private Session session;
 	
 	private MessageConsumer messageConsumer;
+	
+	private String queue;
 	
 	private MessageListener messageListener;
 
@@ -62,7 +70,11 @@ public class SQSListenerHolder implements Serializable {
 			connection = createConnection();
 			session = connection.createSession(false, sqsListener.acknowledgeMode());
 			messageListener = BeanProvider.getDependent(messageListenerClass).get();
-			messageConsumer = session.createConsumer(session.createQueue(sqsListener.queue()));
+			
+			queue = getQueueName();
+			checkQueue();
+			
+			messageConsumer = session.createConsumer(session.createQueue(queue));
 			messageConsumer.setMessageListener(messageListener);
 			connection.start();
 		}catch(Exception e){
@@ -88,6 +100,27 @@ public class SQSListenerHolder implements Serializable {
 			connectionFactory = ((PooledConnectionFactory) BeanProvider.getContextualReference(sqsListener.pooledConnectionFactoryName()));
 		}
 		return connectionFactory.createConnection();
+	}
+	
+	private String getQueueName(){
+		return BeanProvider.getDependent(SQSQueueNameResolver.class).get().resolve(sqsListener, messageListenerClass);
+	}
+	
+	private void checkQueue() throws JMSException{
+		if(sqsListener.createQueue()){
+			AmazonSQS amazonSQS = ((SQSConnection)((PooledConnection)connection).getConnection()).getAmazonSQSClient();
+			try{
+				amazonSQS.getQueueUrl(queue);
+			}catch(QueueDoesNotExistException e){
+				CreateQueueRequest createQueueRequest = new CreateQueueRequest(queue);
+				createQueueRequest.addAttributesEntry("DelaySeconds", String.valueOf(sqsListener.delaySeconds()));
+				createQueueRequest.addAttributesEntry("MaximumMessageSize", String.valueOf(sqsListener.maximumMessageSize()));
+				createQueueRequest.addAttributesEntry("MessageRetentionPeriod", String.valueOf(sqsListener.messageRetentionPeriod()));
+				createQueueRequest.addAttributesEntry("ReceiveMessageWaitTimeSeconds", String.valueOf(sqsListener.receiveMessageWaitTimeSeconds()));
+				createQueueRequest.addAttributesEntry("VisibilityTimeout", String.valueOf(sqsListener.visibilityTimeout()));
+				amazonSQS.createQueue(createQueueRequest);
+			}
+		}
 	}
 	
 	/*
@@ -116,6 +149,10 @@ public class SQSListenerHolder implements Serializable {
 
 	public Class<? extends MessageListener> getMessageListenerClass() {
 		return messageListenerClass;
+	}
+
+	public String getQueue() {
+		return queue;
 	}
 	
 }

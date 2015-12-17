@@ -49,4 +49,44 @@ public @interface SQSListener {
 	
 	int acknowledgeMode() default Session.AUTO_ACKNOWLEDGE;
 	
+	/**
+	 * Create queue if not exists
+	 * @return
+	 */
+	boolean createQueue() default false;
+	
+	/**
+	 * DelaySeconds attribute used for create queue.
+	 * Default: 0;
+	 * @return
+	 */
+	int delaySeconds() default 0;
+	
+	/**
+	 * MaximumMessageSize attribute used for create queue.
+	 * Default: 262144 (256 KiB)
+	 * @return
+	 */
+	int maximumMessageSize() default 262144;
+	
+	/**
+	 * MessageRetentionPeriod attribute used for create queue.
+	 * Default: 345600 (4 days).
+	 * @return
+	 */
+	int messageRetentionPeriod() default 345600;
+	
+	/**
+	 * ReceiveMessageWaitTimeSeconds attribute used for create queue.
+	 * Default: 0
+	 * @return
+	 */
+	int receiveMessageWaitTimeSeconds() default 0;
+	
+	/**
+	 * VisibilityTimeout attribute used for create queue.
+	 * Default: 30
+	 * @return
+	 */
+	int visibilityTimeout() default 30;
 }
