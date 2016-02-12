@@ -2,7 +2,6 @@ package br.com.surittec.suricdi.sqs.context;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.interceptor.AroundInvoke;
@@ -23,12 +22,10 @@ public class SQSContextControlInterceptor implements Serializable {
 		ContextControl ctxCtrl = BeanProvider.getContextualReference(ContextControl.class);
 		try {
 			ctxCtrl.startContext(SessionScoped.class);
-			ctxCtrl.startContext(ConversationScoped.class);
 			ctxCtrl.startContext(RequestScoped.class);
 			return ctx.proceed();
 		} finally {
 			ctxCtrl.stopContext(RequestScoped.class);
-			ctxCtrl.stopContext(ConversationScoped.class);
 			ctxCtrl.stopContext(SessionScoped.class);
 		}
 	}
