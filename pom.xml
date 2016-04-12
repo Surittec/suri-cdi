@@ -10,7 +10,7 @@
 	</parent>
 	
 	<artifactId>suri-cdi</artifactId>
-	<version>2.0.15</version>
+	<version>2.0.16</version>
 	<packaging>pom</packaging>
 
 	<name>Suri CDI</name>
@@ -300,7 +300,7 @@
 		<suri-util.version>1.0.8</suri-util.version>
 		<suri-quartz.version>1.0.3</suri-quartz.version>
 		<suri-jpa.version>1.0.1</suri-jpa.version>
-		<suri-validation.version>1.0.1</suri-validation.version>
+		<suri-validation.version>1.0.2</suri-validation.version>
 		<suri-faces.version>1.0.9</suri-faces.version>
 		
 	</properties>
