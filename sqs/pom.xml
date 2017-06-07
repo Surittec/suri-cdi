@@ -64,7 +64,7 @@
 	
 	<properties>
 		<activemq-jms-pool.version>5.13.3</activemq-jms-pool.version>
- 		<aws-sqs-lib.version>1.0.6</aws-sqs-lib.version>
+ 		<aws-sqs-lib.version>1.0.7</aws-sqs-lib.version>
 	</properties>
 	
 </project>
